@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "600836715592",
+    "firebase_url": "https://com-example-mountaineering-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "com-example-mountaineering",
+    "storage_bucket": "com-example-mountaineering.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600836715592:android:a5adb7f838ac2a1069547d",
+        "android_client_info": {
+          "package_name": "com.example.mountaineering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600836715592-9r5uq40mflck2a33e9nktbdk1dn4il8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb1ASnZqIbPZ-QqFgVa6A4njTXyfn6DJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600836715592-9r5uq40mflck2a33e9nktbdk1dn4il8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
