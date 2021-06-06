@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-        <activity android:name=".forgetPage"></activity>
+        <activity android:name=".findPeoplePage5"></activity>
+        <activity android:name=".findPeoplePage7" />
+        <activity android:name=".findPeoplePage2" />
+        <activity android:name=".findPeoplePage6" />
+        <activity android:name=".findPeoplePage4" />
+        <activity android:name=".findPeoplePage3" />
+        <activity android:name=".findPeoplePage1" />
+        <activity android:name=".findPeople" />
+        <activity android:name=".forgetPage" />
         <activity android:name=".homeScreen" />
         <activity android:name=".registered" />
         <activity android:name=".sign_in" />

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageView1"
+        android:layout_width="339dp"
+        android:layout_height="293dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/huhwanshan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="30dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true" />
+
+    <Button
+        android:id="@+id/goToNotYetPage"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="56dp"
+
+        android:layout_weight="1"
+        android:text="參加揪團"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        android:layout_marginLeft="50dp"></Button>
+
+    <Button
+        android:id="@+id/goToCreateGroup"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="50dp"
+        android:layout_weight="1"
+        android:text="創建揪團"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        android:layout_marginRight="50dp"></Button>
+
+    <Button
+        android:id="@+id/joinGroupIng"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+
+        android:layout_weight="1"
+        android:text="正在進行中揪團"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToNotYetPage"
+        android:layout_marginLeft="50dp"></Button>
+
+    <Button
+        android:id="@+id/groupHistory"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="60dp"
+
+        android:layout_marginEnd="50dp"
+        android:layout_weight="1"
+        android:text="揪團歷史紀錄"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToCreateGroup"
+        android:layout_marginRight="50dp"></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
