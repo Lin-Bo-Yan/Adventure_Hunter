@@ -2,7 +2,10 @@
     <string name="app_name">揪團來爬山</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="provide">提供您要重置密碼的帳戶電子郵件！</string>
+    <string name="select">選擇我們應該使用哪個聯繫方式來重置您的密碼？</string>
+    <string name="identity">您的身份已被驗證 設置您的新密碼</string>
+    <string name="finish">你的密碼以更新完成</string>
     <string-array name="noYetJoinTitle">
         <item>玉山</item>
         <item>加里山</item>
@@ -91,5 +94,14 @@
         <item>8</item>
         <item>9</item>
     </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 </resources>

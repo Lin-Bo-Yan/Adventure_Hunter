@@ -23,21 +23,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-30dp"
-            android:fontFamily="@font/aclonica"
             android:text="Welcome"
             android:textColor="#000000"
             android:textSize="40sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SignUp To Start Your New Adventure"
+            android:text="註冊開始你的新冒險"
             android:textSize="20dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userName"
+            android:id="@+id/Account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="UserName"
+            android:hint="Account"
             app:counterEnabled="true"
             app:counterMaxLength="15"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -68,13 +67,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/forgetPassWord1"
+            android:id="@+id/forgetPassWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/allan_bold"
-            android:text="Forget PassWord"
+            android:text="忘記密碼"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="20dp" />
 
     </LinearLayout>
 
@@ -93,10 +91,9 @@
         android:id="@+id/Registered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/allan_bold"
-        android:text="Registered"
+        android:text="註冊"
         android:textColor="#000000"
-        android:textSize="22dp" />
+        android:textSize="20dp" />
 
 
 

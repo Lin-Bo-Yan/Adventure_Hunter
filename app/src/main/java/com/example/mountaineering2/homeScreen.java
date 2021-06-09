@@ -9,13 +9,14 @@ import android.widget.ImageView;
 
 public class homeScreen extends AppCompatActivity {
 
-      private ImageView alishan;
+    private ImageView alishan, tataga;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
-        alishan=findViewById(R.id.alishan);
+        alishan = (ImageView) findViewById(R.id.tataga2);
         alishan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,12 +24,24 @@ public class homeScreen extends AppCompatActivity {
             }
         });
 
+        tataga = (ImageView) findViewById(R.id.tataga);
+        tataga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {member_profile();}
+        });
+
     }
+
     //揪團
-    public void openFindPeople(){
-        Intent intent =new Intent(this,findPeople.class);
+    public void openFindPeople() {
+        Intent intent = new Intent(this, findPeople.class);
         startActivity(intent);
 
     }
 
+    //會員資料
+    public void member_profile() {
+        Intent intent = new Intent(this, member.class);
+        startActivity(intent);
+    }
 }

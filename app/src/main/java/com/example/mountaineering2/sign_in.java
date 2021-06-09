@@ -8,20 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class sign_in extends AppCompatActivity {
-    private TextView registered;
+    private TextView registered,forgetPassWord;
     private Button loginIn;
 
-    private TextInputLayout userName,passWord;
+    private TextInputLayout Account,passWord;
+
+    RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
 
-        userName=findViewById(R.id.userName);
+        Account=findViewById(R.id.Account);
         passWord=findViewById(R.id.passWord);
 
 
@@ -33,7 +36,7 @@ public class sign_in extends AppCompatActivity {
             }
         });
 
-        loginIn=findViewById(R.id.loginIn);
+        loginIn=(Button)findViewById(R.id.loginIn);
         loginIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,16 +44,24 @@ public class sign_in extends AppCompatActivity {
             }
         });
 
+        forgetPassWord=(TextView)findViewById(R.id.forgetPassWord);
+        forgetPassWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openforgetPage();}
+        });
+
     }
-//---------------------------------------------------------------------------------
+    //----------註冊-------------------------
     public void openRegistered(){
         Intent intent =new Intent(this,registered.class);
-        startActivity(intent);
-
-    }
+        startActivity(intent); }
+    //----------首頁-------------------------
     public void openHomeScreen(){
         Intent intent =new Intent(this,homeScreen.class);
+        startActivity(intent); }
+    //----------忘記密碼----------------------
+    public void openforgetPage(){
+        Intent intent=new Intent(this,forgetPage.class);
         startActivity(intent);
-
     }
 }
