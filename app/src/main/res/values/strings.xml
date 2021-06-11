@@ -1,11 +1,14 @@
 <resources>
-    <string name="app_name">揪團來爬山</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 我的部分 -->
     <string name="provide">提供您要重置密碼的帳戶電子郵件！</string>
     <string name="select">選擇我們應該使用哪個聯繫方式來重置您的密碼？</string>
     <string name="identity">您的身份已被驗證 設置您的新密碼</string>
     <string name="finish">你的密碼以更新完成</string>
+    <!-- ▲我的部分 -->
+    <string name="app_name">揪團來爬山</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string-array name="noYetJoinTitle">
         <item>玉山</item>
         <item>加里山</item>
@@ -41,7 +44,7 @@
 
     </string-array>
 
-    <string-array name="descriptionPage4">
+    <string-array name="descriptionSearch_Ing_Group_Screen">
         <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
         <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
         <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
@@ -52,7 +55,7 @@
 
     </string-array>
 
-    <string-array name="groupHistoryPage6">
+    <string-array name="groupHistoryGroup_History_Screen">
         <item>能高山</item>
         <item>屏風山</item>
         <item>石門山</item>
@@ -60,7 +63,7 @@
         <item>磐石山</item>
         <item>羊頭山</item>
     </string-array>
-    <string-array name="descriptionPage6">
+    <string-array name="descriptionGroup_History_Screen">
         <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
         <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
         <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
@@ -94,14 +97,4 @@
         <item>8</item>
         <item>9</item>
     </string-array>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-
 </resources>

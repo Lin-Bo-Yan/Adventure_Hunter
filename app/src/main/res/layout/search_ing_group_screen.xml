@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".findPeoplePage4">
+    tools:context=".Search_Ing_Group_Screen">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/groupIngPage4"
+        android:id="@+id/groupIngSearch_Ing_Group"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

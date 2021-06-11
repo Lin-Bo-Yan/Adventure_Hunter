@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".findPeoplePage6">
+    tools:context=".Group_History_Screen">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/groupHistoryPage6"
+        android:id="@+id/groupHistoryGroup_History_Screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

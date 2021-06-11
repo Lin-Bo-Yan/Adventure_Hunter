@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".findPeoplePage7">
+    tools:context=".Group_History_Screen_Page2">
 
     <TextView
-        android:id="@+id/titlePage7"
+        android:id="@+id/titleGroup_History_Screen_Page2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -20,18 +20,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/mainImageViewPage7"
+        android:id="@+id/mainImageViewGroup_History_Screen_Page2"
         android:layout_width="350sp"
         android:layout_height="200sp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePage7"
+        app:layout_constraintTop_toBottomOf="@+id/titleGroup_History_Screen_Page2"
         app:srcCompat="@drawable/yushan" />
 
     <TextView
-        android:id="@+id/descriptionPage7"
+        android:id="@+id/descriptionGroup_History_Screen_Page2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -41,17 +41,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainImageViewPage7" />
+        app:layout_constraintTop_toBottomOf="@+id/mainImageViewGroup_History_Screen_Page2" />
 
-    <!--    <Button-->
-    <!--        android:id="@+id/goToMission"-->
-    <!--        android:layout_width="339dp"-->
-    <!--        android:layout_height="43dp"-->
-    <!--        android:layout_marginBottom="40dp"-->
-    <!--        android:text="開始任務"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="60dp"
+        android:onClick="GoBackLastPage"
+        android:text="返回上頁"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="60dp"
+        android:text="去參加其他揪團"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="GoToJoinOthers" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

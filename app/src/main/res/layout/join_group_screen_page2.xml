@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".findPeoplePage2">
+    tools:context=".Join_Group_Screen_Page2">
 
 
     <TextView
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/yushan" />
 
     <TextView
-        android:id="@+id/descriptionPage2"
+        android:id="@+id/descriptionJoin_Group_Screen_Page2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -49,10 +49,11 @@
         android:layout_width="339dp"
         android:layout_height="43dp"
         android:layout_marginBottom="40dp"
-        android:text="參加揪團"
+        android:text="參加此揪團"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="goToGroupIngList"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
