@@ -12,52 +12,68 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
 
-        <activity
-            android:name=".Create_Check_Screen"
-            android:label="確認創建資訊"
-            android:parentActivityName=".Create_Group_Screen"></activity>
-        <activity
-            android:name=".Join_Group_Screen"
+        <activity android:name=".findPeople"
+            android:label="小組任務"/>
+
+        <activity android:name=".Join_Group_Screen"
             android:label="參加揪團"
-            android:parentActivityName=".findPeople" />
-        <activity
-            android:name=".Group_History_Screen"
-            android:label="歷史揪團紀錄"
-            android:parentActivityName=".findPeople" />
-        <activity
-            android:name=".Search_Ing_Group_Screen"
-            android:label="正在進行中揪團"
-            android:parentActivityName=".findPeople" />
-        <activity
-            android:name=".Create_Group_Screen"
-            android:label="創建揪團"
-            android:parentActivityName=".findPeople" />
-        <activity
-            android:name=".Join_Group_Screen_Page2"
+            android:parentActivityName=".findPeople"/>
+        <activity android:name=".Join_Group_Screen_Page2"
             android:label="查看揪團細節--參與揪團"
-            android:parentActivityName=".Join_Group_Screen" />
-        <activity
-            android:name=".Search_Ing_Group_Screen_Page2"
-            android:label="查看揪團細節--執行任務"
-            android:parentActivityName=".Search_Ing_Group_Screen" />
-        <activity
-            android:name=".Group_History_Screen_Page2"
+            android:parentActivityName=".Join_Group_Screen"/>
+
+        <activity android:name=".Group_History_Screen"
+            android:label="揪團歷史"
+            android:parentActivityName=".findPeople"/>
+        <activity android:name=".Group_History_Screen_Page2"
             android:label="查看歷史揪團細節"
-            android:parentActivityName=".Group_History_Screen" />
+            android:parentActivityName=".Group_History_Screen"/>
 
+        <activity android:name=".Search_Ing_Group_Screen"
+            android:label="正在進行中揪團"
+            android:parentActivityName=".findPeople"/>
 
-        <activity android:name=".registered1" />
-        <activity android:name=".forgetPage3" />
-        <activity android:name=".forgetPage2" />
-        <activity android:name=".forgetPage1" />
-        <activity android:name=".forgetPage" />
+        <activity android:name=".Create_Group_Screen"
+            android:label="創建揪團"
+            android:parentActivityName=".findPeople"/>
 
-        <activity android:name=".member" />
-        <activity android:name=".findPeople" />
-        <activity android:name=".homeScreen" />
-        <activity android:name=".registered" />
-        <activity android:name=".sign_in" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Search_Ing_Group_Screen_Page2"
+            android:label="查看揪團細節--執行任務"
+            android:parentActivityName=".Search_Ing_Group_Screen"/>
+
+        <activity android:name=".Create_Check_Screen"
+            android:label="確認創建揪團"
+            android:parentActivityName=".Create_Group_Screen"/>
+
+        <activity android:name=".forgetPage"
+            android:label="忘記密碼"/>
+        <activity android:name=".forgetPage1"
+            android:label="忘記密碼2"
+            android:parentActivityName=".forgetPage"/>
+        <activity android:name=".forgetPage2"
+            android:label="忘記密碼3"
+            android:parentActivityName=".forgetPage"/>
+        <activity android:name=".forgetPage3"
+            android:label="忘記密碼4"
+            android:parentActivityName=".forgetPage"/>
+
+        <activity android:name=".member"
+            android:label="會員頁面"/>
+
+        <activity android:name=".homeScreen"
+            android:label="主畫面"/>
+
+        <activity android:name=".registered"
+            android:label="註冊"/>
+        <activity android:name=".registered1"
+            android:label="註冊第二張"
+            android:parentActivityName=".registered"/>
+
+        <activity android:name=".sign_in"
+            android:label="登入畫面"/>
+        <activity android:name=".MainActivity"
+            android:label="開始前動畫">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -38,7 +38,7 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
 
             //產生資料
             data5 = getIntent().getStringExtra("data1Page6");
-            data6 = getIntent().getStringExtra("data2Page6");
+            data6 = getIntent().getStringExtra("data1Page6");
             imagesPage6 = getIntent().getIntExtra("myImagePage6", 1);
 
         }else{

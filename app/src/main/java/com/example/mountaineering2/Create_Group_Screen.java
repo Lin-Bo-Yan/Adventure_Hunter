@@ -3,11 +3,9 @@ package com.example.mountaineering2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -67,7 +65,7 @@ public class Create_Group_Screen extends AppCompatActivity {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog pickerDialog = new DatePickerDialog(Create_Group_Screen.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog pickerDialog =new DatePickerDialog(Create_Group_Screen.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         String format = "您所選的日期為:" + setDateFormat(year, month, day);
@@ -81,7 +79,6 @@ public class Create_Group_Screen extends AppCompatActivity {
             }
         });
     }
-
     Spinner.OnItemSelectedListener listener = new Spinner.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -114,7 +111,7 @@ public class Create_Group_Screen extends AppCompatActivity {
 
     public void submitCreate(View view) {
 
-        if (data != null) {
+        if (data != null){
             String date = data.toString();
             String mountain = spinner1.toString();
             String people = spinner2.toString();
@@ -130,13 +127,12 @@ public class Create_Group_Screen extends AppCompatActivity {
 
             intent.putExtras(bundle);
             startActivity(intent);
-        } else {
+        }else{
             Toast.makeText(Create_Group_Screen.this, "請檢查是否填寫正確資訊", Toast.LENGTH_SHORT).show();
         }
     }
-
     public void CloseInputKeyboard(View view) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(findViewById(R.id.Create_bg).getWindowToken(), 0);
+//        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(Create_Group_Screen.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }
