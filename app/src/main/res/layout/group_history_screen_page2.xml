@@ -45,25 +45,27 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
+        android:layout_width="143dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginBottom="60dp"
         android:onClick="GoBackLastPage"
         android:text="返回上頁"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
+        android:layout_width="143dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginBottom="60dp"
         android:onClick="GoToJoinOthers"
-        android:text="去參加其他揪團"
+        android:text="去參加\n其他揪團"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
