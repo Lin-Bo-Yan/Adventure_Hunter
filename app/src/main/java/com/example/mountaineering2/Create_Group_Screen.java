@@ -3,9 +3,11 @@ package com.example.mountaineering2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -132,7 +134,7 @@ public class Create_Group_Screen extends AppCompatActivity {
         }
     }
     public void CloseInputKeyboard(View view) {
-//        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//        imm.hideSoftInputFromWindow(Create_Group_Screen.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(findViewById(R.id.Create_bg).getWindowToken(), 0);
     }
 }
