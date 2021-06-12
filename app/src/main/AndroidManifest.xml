@@ -71,8 +71,7 @@
 
         <activity android:name=".sign_in"
             android:label="登入畫面"/>
-        <activity android:name=".MainActivity"
-            android:label="開始前動畫">
+        <activity android:name=".MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
