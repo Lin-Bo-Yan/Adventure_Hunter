@@ -11,10 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:id="@+id/forget_page"
-        android:onClick="Close_Input_Board"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:id="@+id/forget_page4"
+        android:onClick="Close_Input_Board">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email"
+            android:text="@string/phone"
             android:textColor="#000000"
             android:textSize="18dp"
             android:gravity="center"
@@ -53,9 +52,9 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
+            android:hint="Phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_email"
+            app:startIconDrawable="@drawable/ic_iphone"
             app:startIconTint="#000000"
             app:endIconMode="clear_text"
             android:layout_marginTop="20dp">

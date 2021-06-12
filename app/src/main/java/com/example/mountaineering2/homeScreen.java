@@ -41,7 +41,7 @@ public class homeScreen extends AppCompatActivity {
 
     //會員資料
     public void member_profile() {
-        Intent intent = new Intent(this, member.class);
+        Intent intent = new Intent(this, sign_in.class);
         startActivity(intent);
     }
 }

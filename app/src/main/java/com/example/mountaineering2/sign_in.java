@@ -63,7 +63,7 @@ public class sign_in extends AppCompatActivity {
         startActivity(intent); }
     //----------忘記密碼----------------------
     public void openforgetPage(){
-        Intent intent=new Intent(this,forgetPage.class);
+        Intent intent=new Intent(this,forgetPage1.class);
         startActivity(intent);
     }
     //-------判斷帳號密碼
@@ -81,7 +81,7 @@ public class sign_in extends AppCompatActivity {
         .setNegativeButton("ok",null).show();
         }
     }
-
+    //-------鍵盤收縮
     public void Close_Input_Board(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(findViewById(R.id.Sign_in_Page).getWindowToken(), 0);

@@ -8,21 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.ImageView;
 
-public class forgetPage extends AppCompatActivity {
-     Button next;
+public class forgetPage4 extends AppCompatActivity {
+    Button next;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forget_page);
+        setContentView(R.layout.forget_page4);
 
         next=(Button)findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {next();}
         });
-
     }
 
     private void next(){
@@ -32,6 +31,6 @@ public class forgetPage extends AppCompatActivity {
     //-------鍵盤收縮
     public void Close_Input_Board(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(findViewById(R.id.forget_page).getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(findViewById(R.id.forget_page4).getWindowToken(), 0);
     }
 }

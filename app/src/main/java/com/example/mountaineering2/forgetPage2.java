@@ -2,25 +2,20 @@ package com.example.mountaineering2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
 public class forgetPage2 extends AppCompatActivity {
     Button OK;
-    ImageView fg_backspace1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forget_page2);
-
-        fg_backspace1=(ImageView)findViewById(R.id.fg_backspace1);
-        fg_backspace1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {backpage();}
-        });
 
         OK=(Button)findViewById(R.id.OK);
         OK.setOnClickListener(new View.OnClickListener() {
@@ -33,9 +28,9 @@ public class forgetPage2 extends AppCompatActivity {
         Intent intent =new Intent(this,forgetPage3.class);
         startActivity(intent);
     }
-    //-------------------回上一頁
-    private void backpage(){
-        Intent intent =new Intent(this,forgetPage.class);
-        startActivity(intent);
+    //-------鍵盤收縮
+    public void Close_Input_Board(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(findViewById(R.id.forget_page2).getWindowToken(), 0);
     }
 }

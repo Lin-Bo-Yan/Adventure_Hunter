@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/hiking_bg_"
     tools:context=".homeScreen">
 
 <!--    <androidx.appcompat.widget.Toolbar-->
@@ -55,6 +56,7 @@
                 android:id="@+id/tataga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 app:srcCompat="@drawable/tataga" />
 
         </androidx.cardview.widget.CardView>
@@ -82,6 +84,7 @@
                 android:id="@+id/guguan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 app:srcCompat="@drawable/guguan" />
 
         </androidx.cardview.widget.CardView>
@@ -96,6 +99,7 @@
                 android:id="@+id/jalishan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 app:srcCompat="@drawable/jalishan" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>

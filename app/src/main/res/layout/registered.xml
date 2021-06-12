@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".registered">
+    tools:context=".registered"
+    android:id="@+id/registered"
+    android:onClick="Close_Input_Board">
 
     <ImageView
         android:layout_width="150dp"
@@ -13,7 +15,6 @@
         android:src="@drawable/treasure" />
 
     <TextView
-        android:id="@+id/Registered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"

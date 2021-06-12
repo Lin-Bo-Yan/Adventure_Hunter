@@ -2,9 +2,11 @@ package com.example.mountaineering2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -36,5 +38,10 @@ public class registered extends AppCompatActivity {
     private void next(){
         Intent intent=new Intent(this,registered1.class);
         startActivity(intent);
+    }
+    //-------鍵盤收縮
+    public void Close_Input_Board(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(findViewById(R.id.registered).getWindowToken(), 0);
     }
 }
