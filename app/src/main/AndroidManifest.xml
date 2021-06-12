@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Mountaineering2">
 
         <activity android:name=".findPeople"
-            android:label="小組任務"/>
+            android:label="揪團任務頁"/>
 
         <activity android:name=".Join_Group_Screen"
             android:label="參加揪團"

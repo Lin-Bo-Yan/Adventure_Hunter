@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".sign_in"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/Sign_in_Page"
+    android:onClick="Close_Input_Board">
 
     <LinearLayout
         android:layout_width="match_parent"

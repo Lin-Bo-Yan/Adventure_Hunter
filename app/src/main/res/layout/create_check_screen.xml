@@ -10,118 +10,125 @@
         android:id="@+id/dateCheck"
         android:layout_width="120dp"
         android:layout_height="24dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/dateCheck5"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="60dp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dateCheck5"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
+        android:layout_width="154dp"
+        android:layout_height="25dp"
         android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="60dp"
         android:text="您想揪團的日期為:"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="60dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dateCheck6"
         android:layout_width="120dp"
         android:layout_height="24dp"
         android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="60dp"
         android:text="您想爬的山為:"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck5"
-        android:layout_marginLeft="60dp" />
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck5" />
 
     <TextView
         android:id="@+id/dateCheck7"
-        android:layout_width="172dp"
-        android:layout_height="22dp"
+        android:layout_width="166dp"
+        android:layout_height="58dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:text="想揪的人數為(包含自己):"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="48dp"
+        android:text="想揪的人數為\n(包含自己):"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck6"
-        android:layout_marginLeft="60dp" />
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck6" />
 
     <TextView
         android:id="@+id/dateCheck8"
         android:layout_width="120dp"
         android:layout_height="24dp"
         android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="60dp"
         android:text="想說的話:"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck7"
-        android:layout_marginLeft="60dp" />
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck7" />
 
     <TextView
         android:id="@+id/mountainShow"
         android:layout_width="120dp"
         android:layout_height="24dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
         android:text="TextView"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dateCheck6"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="51dp" />
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck" />
 
     <TextView
         android:id="@+id/peopleShow"
         android:layout_width="120dp"
         android:layout_height="24dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
         android:text="TextView"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mountainShow"
-        android:layout_marginRight="48dp" />
+        app:layout_constraintTop_toBottomOf="@+id/mountainShow" />
 
     <TextView
         android:id="@+id/sayShow"
         android:layout_width="290dp"
         android:layout_height="79dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:text="TextView"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck8"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="48dp" />
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck8" />
 
     <Button
         android:id="@+id/submitCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="118dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="60dp"
-        android:text="創建揪團"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sayShow"
+        android:layout_marginRight="60dp"
         android:onClick="goToGroupIngList"
-        android:layout_marginRight="60dp" />
+        android:text="創建揪團"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sayShow" />
 
     <Button
         android:id="@+id/cancelCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="67dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="48dp"
-        android:text="回上一頁"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sayShow"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="40dp"
         android:onClick="backToCreate"
-        android:layout_marginLeft="60dp" />
+        android:text="回上一頁"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sayShow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
