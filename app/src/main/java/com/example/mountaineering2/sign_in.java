@@ -33,7 +33,6 @@ public class sign_in extends AppCompatActivity {
         Account=(TextInputLayout)findViewById(R.id.Account);
         passWord=(TextInputLayout)findViewById(R.id.passWord);
 
-
         registered=(TextView)findViewById(R.id.Registered);
         registered.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,4 +85,5 @@ public class sign_in extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(findViewById(R.id.Sign_in_Page).getWindowToken(), 0);
     }
+
 }
