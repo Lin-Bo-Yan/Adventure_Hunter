@@ -28,7 +28,7 @@ public class findPeople extends AppCompatActivity {
 //        myRef.setValue("Hello, World!");
 
 
-        //創建揪團跳轉
+        //創建任務跳轉
         goToCreateGroup = findViewById(R.id.goToCreateGroup);
         goToCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +39,7 @@ public class findPeople extends AppCompatActivity {
             }
         });
 
-        //參加揪團跳轉
+        //參加任務跳轉
         goToNotYetPage = findViewById(R.id.goToNotYetPage);
         goToNotYetPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class findPeople extends AppCompatActivity {
 
 
 
-        //歷史參加揪團查詢
+        //歷史參加任務查詢
         groupHistory = findViewById(R.id.groupHistory);
         groupHistory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class findPeople extends AppCompatActivity {
             }
         });
 
-        //正在進行中揪團跳轉
+        //正在進行中任務跳轉
         joinGroupIng = findViewById(R.id.joinGroupIng);
         joinGroupIng.setOnClickListener(new View.OnClickListener() {
             @Override

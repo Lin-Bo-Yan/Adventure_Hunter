@@ -64,7 +64,7 @@
         android:layout_marginRight="40dp"
         android:layout_marginBottom="60dp"
         android:onClick="GoToJoinOthers"
-        android:text="去參加\n其他揪團"
+        android:text="去參加\n其他任務"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

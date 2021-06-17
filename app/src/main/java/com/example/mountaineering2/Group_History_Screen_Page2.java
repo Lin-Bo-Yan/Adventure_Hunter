@@ -65,7 +65,7 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
     public void GoToJoinOthers(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("離開歷史查詢？");
-        alert.setMessage("確定要前往參加揪團頁面嗎？");
+        alert.setMessage("確定要前往參加任務頁面嗎？");
         alert.setPositiveButton("前往", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

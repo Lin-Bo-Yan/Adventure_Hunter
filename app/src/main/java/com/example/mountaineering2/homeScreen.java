@@ -32,7 +32,7 @@ public class homeScreen extends AppCompatActivity {
 
     }
 
-    //揪團
+    //任務
     public void openFindPeople() {
         Intent intent = new Intent(this, findPeople.class);
         startActivity(intent);

@@ -16,7 +16,7 @@
         android:layout_width="103dp"
         android:layout_height="26dp"
         android:layout_marginBottom="520dp"
-        android:text="揪團日期 :"
+        android:text="任務日期 :"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

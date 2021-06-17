@@ -57,7 +57,7 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
     public void goToGroupIngList(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("確定要參加嗎？");
-        alert.setMessage("參加後將會通知揪團創建者");
+        alert.setMessage("參加後將會通知任務創建者");
         alert.setPositiveButton("確定參加", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

@@ -14,39 +14,39 @@
 
         <activity
             android:name=".findPeople"
-            android:label="揪團任務頁"
+            android:label="任務主頁"
             android:parentActivityName=".homeScreen"/>
         <activity
             android:name=".Join_Group_Screen"
-            android:label="參加揪團"
+            android:label="參加任務"
             android:parentActivityName=".findPeople" />
         <activity
             android:name=".Join_Group_Screen_Page2"
-            android:label="查看揪團細節--參與揪團"
+            android:label="查看任務細節--參與任務"
             android:parentActivityName=".Join_Group_Screen" />
         <activity
             android:name=".Group_History_Screen"
-            android:label="揪團歷史"
+            android:label="歷史任務"
             android:parentActivityName=".findPeople" />
         <activity
             android:name=".Group_History_Screen_Page2"
-            android:label="查看歷史揪團細節"
+            android:label="歷史任務細節"
             android:parentActivityName=".Group_History_Screen" />
         <activity
             android:name=".Search_Ing_Group_Screen"
-            android:label="正在進行中揪團"
+            android:label="選擇將要開始的任務吧！"
             android:parentActivityName=".findPeople" />
         <activity
             android:name=".Create_Group_Screen"
-            android:label="創建揪團"
+            android:label="創建任務"
             android:parentActivityName=".findPeople" />
         <activity
             android:name=".Search_Ing_Group_Screen_Page2"
-            android:label="查看揪團細節--執行任務"
+            android:label="查看任務細節--開始執行任務"
             android:parentActivityName=".Search_Ing_Group_Screen" />
         <activity
             android:name=".Create_Check_Screen"
-            android:label="確認創建揪團"
+            android:label="確認創建任務"
             android:parentActivityName=".Create_Group_Screen" />
         <activity
             android:name=".forgetPage"

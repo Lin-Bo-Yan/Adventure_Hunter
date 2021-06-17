@@ -45,6 +45,6 @@ public class Create_Check_Screen extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Create_Check_Screen.this, Search_Ing_Group_Screen.class);
         startActivity(intent);
-        Toast.makeText(Create_Check_Screen.this, "創建成功，前往揪團頁面執行任務吧!",  Toast.LENGTH_SHORT).show();
+        Toast.makeText(Create_Check_Screen.this, "創建成功，前往任務頁面執行任務吧!",  Toast.LENGTH_SHORT).show();
     }
 }

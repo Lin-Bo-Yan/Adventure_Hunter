@@ -55,14 +55,14 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
     public void CancelMission(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("確定要取消？");
-        alert.setMessage("點擊後將取消此揪團與任務？");
+        alert.setMessage("點擊後將取消此任務與任務？");
         alert.setPositiveButton("確定取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent();
                 intent.setClass(Search_Ing_Group_Screen_Page2.this, Search_Ing_Group_Screen.class);
                 startActivity(intent);
-                Toast.makeText(Search_Ing_Group_Screen_Page2.this, "已取消此揪團與任務", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Search_Ing_Group_Screen_Page2.this, "已取消此任務與任務", Toast.LENGTH_SHORT).show();
             }
         });
         alert.setNegativeButton("我再想想", new DialogInterface.OnClickListener() {
