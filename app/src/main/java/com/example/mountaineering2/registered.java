@@ -27,13 +27,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class registered extends AppCompatActivity {
-    TextInputLayout reg_account,reg_password,reg_phon,reg_email,reg_userName,reg_birthday;
-    private String account,password,userName,phon,email,birthday;
+    TextInputLayout reg_account, reg_password, reg_phon, reg_email, reg_userName, reg_birthday;
+    private String account, password, userName, phon, email, birthday;
     Button reg_GO;
     TextView textView;
-    private JSONObject jsonObject;
-    private Map<String, String> map;
-    private RequestQueue requestQueue;
+    JSONObject jsonObject;
+    Map<String, String> map;
+    RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +42,14 @@ public class registered extends AppCompatActivity {
         //textView=(TextView)findViewById(R.id.ttt);
 
 
-        reg_account=(TextInputLayout)findViewById(R.id.reg_Account);
-        reg_password=(TextInputLayout)findViewById(R.id.reg_passWord);
-        reg_userName=(TextInputLayout)findViewById(R.id.reg_useName);
-        reg_phon=(TextInputLayout)findViewById(R.id.reg_phon);
-        reg_email=(TextInputLayout)findViewById(R.id.reg_email);
-        reg_birthday=(TextInputLayout)findViewById(R.id.reg_birthday);
+        reg_account = (TextInputLayout) findViewById(R.id.reg_Account);
+        reg_password = (TextInputLayout) findViewById(R.id.reg_passWord);
+        reg_userName = (TextInputLayout) findViewById(R.id.reg_useName);
+        reg_phon = (TextInputLayout) findViewById(R.id.reg_phon);
+        reg_email = (TextInputLayout) findViewById(R.id.reg_email);
+        reg_birthday = (TextInputLayout) findViewById(R.id.reg_birthday);
 
-        reg_GO=(Button)findViewById(R.id.reg_GO);
+        reg_GO = (Button) findViewById(R.id.reg_GO);
         reg_GO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,14 +60,15 @@ public class registered extends AppCompatActivity {
 
 
     }
+
     //-------把資料轉JSon格式
-    private void conversion_json()throws JSONException {
-        account=reg_account.getEditText().getText().toString().trim();
-        password=reg_password.getEditText().getText().toString().trim();
-        userName=reg_userName.getEditText().getText().toString().trim();
-        phon=reg_phon.getEditText().getText().toString().trim();
-        email=reg_email.getEditText().getText().toString().trim();
-        birthday=reg_birthday.getEditText().getText().toString().trim();
+    private void conversion_json() throws JSONException {
+        account = reg_account.getEditText().getText().toString().trim();
+        password = reg_password.getEditText().getText().toString().trim();
+        userName = reg_userName.getEditText().getText().toString().trim();
+        phon = reg_phon.getEditText().getText().toString().trim();
+        email = reg_email.getEditText().getText().toString().trim();
+        birthday = reg_birthday.getEditText().getText().toString().trim();
 
         map = new HashMap<String, String>();
         map.put("account", account);
@@ -77,26 +79,26 @@ public class registered extends AppCompatActivity {
         map.put("birthday",birthday);
 
         jsonObject = new JSONObject(map);
+        Log.v("joe", "checkdata=" + jsonObject);
     }
 
     //-------JsonObjectRequest
-    public void postJsonObjectRequest(){
+    public void postJsonObjectRequest() {
 
         try {
             conversion_json();
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e("joe","error"+e);
+            Log.e("joe", "error" + e);
         }
         requestQueue = Volley.newRequestQueue(this);
-        String url ="http://aa5d0d4f09c1.ngrok.io/api/todos/";
+        String url = "https://e83aee8435e2.ngrok.io/api/todos";
 
-        JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(Request.Method.POST,url, jsonObject,
+        JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
-                        Log.v("joe","Json"+jsonObject);
+                            Log.v("joe", "ok= "+response);
 
                     }
                 }, new Response.ErrorListener() {
@@ -106,13 +108,16 @@ public class registered extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonRequest);
+        Log.v("joe", "Json= " + jsonObject);
+
     }
 
     //-------去到下一頁
-    private void next(){
-        Intent intent=new Intent(this,registered1.class);
+    private void next() {
+        Intent intent = new Intent(this, registered1.class);
         startActivity(intent);
     }
+
     //-------鍵盤收縮
     public void Close_Input_Board(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
