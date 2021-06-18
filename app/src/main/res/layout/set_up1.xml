@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".set_up1"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新成功"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_check" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="換上你新的身分繼續冒險"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/OK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textSize="19dp"
+            app:backgroundTint="#000000"
+            android:layout_marginTop="30dp"
+            android:onClick="okPage"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

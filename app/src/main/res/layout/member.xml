@@ -13,15 +13,15 @@
         android:src="@drawable/kim_soo_hyun"
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"/>
-
+   姓名
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/realName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/kim_soo_hyun"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:text="金秀賢"
+        android:text=""
         android:textColor="#000000"
         android:textSize="17dp" />
 
@@ -30,7 +30,7 @@
         android:layout_width="600dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/profile"
-        android:layout_below="@id/textView4"
+        android:layout_below="@id/realName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"/>
 
@@ -41,8 +41,9 @@
         android:text="⭐🌟⭐🌟⭐"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/textView4"/>
+        android:layout_below="@+id/realName"/>
 
+    點數
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
@@ -55,22 +56,85 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginLeft="70dp"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_cash" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Points："
+            android:text="點數："
             android:textSize="25dp"/>
+        <TextView
+            android:id="@+id/Points"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="10dp"/>
+
 
     </LinearLayout>
 
+    生日
     <LinearLayout
         android:id="@+id/LinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LinearLayout1"
+        android:layout_below="@+id/LinearLayout1"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/ic_cake" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="生日："
+            android:textSize="25dp"/>
+        <TextView
+            android:id="@+id/birth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+    電子郵件
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/ic_email" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="電子郵件："
+            android:textSize="25dp"/>
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="10dp"/>
+
+
+
+    </LinearLayout>
+
+    設定
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout3"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -83,9 +147,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="set up"
-            android:textSize="25dp" />
+            android:text="設定"
+            android:onClick="go_set_up"
+            android:textSize="25dp"/>
 
     </LinearLayout>
 

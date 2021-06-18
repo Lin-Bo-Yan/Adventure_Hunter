@@ -5,43 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".registered"
-    android:id="@+id/registered"
+    tools:context=".set_up"
+    android:id="@+id/set_up"
     android:onClick="Close_Input_Board">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/treasure" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee"
-        android:text="Registered"
+        android:text="Set up"
         android:textColor="#000000"
         android:textSize="25sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更新你新的資料"
+        android:textColor="#000000"
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        帳號
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_Account"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="帳號"
-            app:counterEnabled="true"
-            app:counterMaxLength="15">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         密碼
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_passWord"
+            android:id="@+id/set_passWord"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,23 +51,9 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        姓名
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_useName"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="姓名">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         信箱
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_email"
+            android:id="@+id/set_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +68,7 @@
 
         電話
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_phon"
+            android:id="@+id/set_phon"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,33 +80,17 @@
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        生日
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/reg_birthday"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="生日">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="datetime" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:id="@+id/ttt"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/reg_GO"
+        android:id="@+id/set_GO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="GO"
         android:textSize="19dp"
-        app:backgroundTint="#000" />
+        app:backgroundTint="#000"
+        android:onClick="next"/>
 
 
 </LinearLayout>

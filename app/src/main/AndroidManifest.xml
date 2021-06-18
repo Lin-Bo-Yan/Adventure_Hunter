@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-
+        <activity android:name=".set_up1"></activity>
+        <activity android:name=".set_up"
+            android:label="更新基本資料"
+            android:parentActivityName=".member"/>
         <activity
             android:name=".findPeople"
             android:label="任務主頁"
-            android:parentActivityName=".homeScreen"/>
+            android:parentActivityName=".homeScreen" />
         <activity
             android:name=".Join_Group_Screen"
             android:label="參加任務"
@@ -51,7 +54,7 @@
         <activity
             android:name=".forgetPage"
             android:label="忘記密碼第五張"
-            android:parentActivityName=".forgetPage"/>
+            android:parentActivityName=".forgetPage" />
         <activity
             android:name=".forgetPage1"
             android:label="忘記密碼第一張"
@@ -63,28 +66,28 @@
         <activity
             android:name=".forgetPage3"
             android:label="忘記密碼第四張" />
-        <activity android:name=".forgetPage4"
+        <activity
+            android:name=".forgetPage4"
             android:label="忘記密碼第二張"
-            android:parentActivityName=".forgetPage"/>
+            android:parentActivityName=".forgetPage" />
         <activity
             android:name=".member"
             android:label="會員頁面"
-            android:parentActivityName=".homeScreen"/>
+            android:parentActivityName=".homeScreen" />
         <activity
             android:name=".homeScreen"
             android:label="主畫面" />
         <activity
             android:name=".registered"
             android:label="註冊"
-            android:parentActivityName=".sign_in"/>
+            android:parentActivityName=".sign_in" />
         <activity
             android:name=".registered1"
             android:label="註冊第二張" />
         <activity
             android:name=".sign_in"
             android:label="登入畫面"
-            android:parentActivityName=".homeScreen"/>
-
+            android:parentActivityName=".homeScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
