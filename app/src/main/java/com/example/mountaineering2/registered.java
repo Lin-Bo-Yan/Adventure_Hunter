@@ -70,12 +70,16 @@ public class registered extends AppCompatActivity {
         birthday=reg_birthday.getEditText().getText().toString().trim();
 
         map = new HashMap<String, String>();
-        map.put("account", account);
-        map.put("password", password);
-        map.put("realname",userName);
-        map.put("email",email);
-        map.put("tel",phon);
-        map.put("birthday",birthday);
+
+        map.put("account", "TestPut");
+        map.put("password", "password");
+
+//        map.put("account", account);
+//        map.put("password", password);
+//        map.put("realname",userName);
+//        map.put("email",email);
+//        map.put("tel",phon);
+//        map.put("birthday",birthday);
 
         jsonObject = new JSONObject(map);
     }
