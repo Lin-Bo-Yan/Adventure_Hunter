@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-        <activity android:name=".set_up1"></activity>
-        <activity android:name=".set_up"
+        <activity android:name=".login_failed"></activity>
+        <activity android:name=".set_up1" />
+        <activity
+            android:name=".set_up"
             android:label="更新基本資料"
-            android:parentActivityName=".member"/>
+            android:parentActivityName=".member" />
         <activity
             android:name=".findPeople"
             android:label="任務主頁"

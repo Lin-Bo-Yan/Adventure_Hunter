@@ -116,28 +116,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="57dp"
-            android:background="@color/white"
-            android:text="⬆找朋友⬆"
-            android:textColor="#000000"
-            android:textSize="20dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⬆找朋友"
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="90dp"
-            android:background="@color/white"
-            android:text="⬆會員資料⬆"
-            android:textColor="#000000"
-            android:textSize="20dp" />
+        </androidx.cardview.widget.CardView>
 
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⬆會員資料"
+                android:textColor="#000000"
+                android:textSize="20dp" />
+
+
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <LinearLayout

@@ -35,7 +35,7 @@
         android:layout_marginTop="5dp"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="⭐🌟⭐🌟⭐"
@@ -53,8 +53,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="70dp"
             android:src="@drawable/ic_cash" />
 
@@ -82,8 +82,8 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="70dp"
             android:src="@drawable/ic_cake" />
         <TextView
@@ -109,8 +109,8 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="70dp"
             android:src="@drawable/ic_email" />
         <TextView
@@ -129,12 +129,42 @@
 
     </LinearLayout>
 
-    設定
+    電話
     <LinearLayout
         android:id="@+id/LinearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LinearLayout3"
+        android:layout_below="@+id/LinearLayout3"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/ic_iphone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="電話："
+            android:textSize="25dp"/>
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="10dp"/>
+
+
+
+    </LinearLayout>
+
+
+    設定
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout4"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
