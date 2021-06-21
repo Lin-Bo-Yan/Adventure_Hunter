@@ -43,6 +43,7 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -51,11 +52,18 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.github.markushi:circlebutton:1.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.google.code.gson:gson:2.8.7'
 
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.7.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+
 
 
 }

@@ -87,6 +87,8 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
 //                intent.setClass(Search_Ing_Group_Screen_Page2.this, xxx.class);
 //                startActivity(intent);
                 Toast.makeText(Search_Ing_Group_Screen_Page2.this, "開始任務，祝您順利!!", Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(Search_Ing_Group_Screen_Page2.this,task_Page.class);
+                startActivity(intent);
             }
         });
         alert.setNegativeButton("等等再說", new DialogInterface.OnClickListener() {

@@ -55,7 +55,6 @@ public class registered extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendPOST();
-                next();
             }
         });
 
@@ -99,8 +98,9 @@ public class registered extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-                    Log.v("joe", "ID:  " + myResponse);
+                    //final String myResponse = response.body().string();
+                   // Log.v("joe", "ID:  " + myResponse);
+                    next();
                 }
             }
         });
