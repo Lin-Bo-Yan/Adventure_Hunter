@@ -80,6 +80,20 @@
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        生日
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/set_birth"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="生日">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <Button

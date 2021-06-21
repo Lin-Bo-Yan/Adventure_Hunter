@@ -19,7 +19,6 @@ public class member extends AppCompatActivity {
 
         //把從登入那邊的資料傳到這裡顯示出來
         Bundle bundle = this.getIntent().getExtras();
-        Bundle bundle1 = this.getIntent().getExtras();
         if(bundle!=null){
             realname=bundle.getString("realname");
             cash=bundle.getString("cash");
@@ -28,16 +27,7 @@ public class member extends AppCompatActivity {
             ID=bundle.getString("id");
             phone=bundle.getString("phone");
             ff();
-        }else if(bundle1!=null){
-            realname=bundle.getString("realname");
-            cash=bundle.getString("cash");
-            email=bundle.getString("email");
-            birth=bundle.getString("birth");
-            ID=bundle.getString("id");
-            phone=bundle.getString("phone");
-            ff();
         }
-
     }
 
 
@@ -59,8 +49,6 @@ public class member extends AppCompatActivity {
 
     //-------去到設定
     public void go_set_up(View view) {
-        //Intent intent=new Intent(this,set_up.class);
-        //startActivity(intent);
         Intent goToSetUp = new Intent(member.this,set_up.class);
         Bundle bundle = new Bundle();
         bundle.putString("id",ID);
