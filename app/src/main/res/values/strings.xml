@@ -1,0 +1,103 @@
+<resources>
+    <!-- 我的部分 -->
+    <string name="email">提供您要重置密碼的帳戶電子郵件！</string>
+    <string name="phone">提供您要重置密碼的手機號碼！</string>
+    <string name="select">選擇我們應該使用哪個聯繫方式來重置您的密碼？</string>
+    <string name="identity">您的身份已被驗證 設置您的新密碼</string>
+    <string name="finish">你的密碼以更新完成</string>
+    <!-- ▲我的部分 -->
+    <string name="app_name">揪團來爬山</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="noYetJoinTitle">
+        <item>玉山</item>
+        <item>加里山</item>
+        <item>谷關七雄</item>
+        <item>合歡群峰</item>
+        <item>北大武山</item>
+        <item>能高越嶺</item>
+        <item>南湖大山</item>
+        <item>關山</item>
+        <item>秀姑巒山</item>
+    </string-array>
+
+    <string-array name="descriptionPage1">
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+        <item>標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。</item>
+    </string-array>
+
+    <string-array name="groupIngTitle">
+        <item>雪山北峰</item>
+        <item>中央尖山</item>
+        <item>合歡群峰</item>
+        <item>北大武山</item>
+        <item>能高越嶺</item>
+        <item>能高越嶺</item>
+        <item>能高越嶺</item>
+
+    </string-array>
+
+    <string-array name="descriptionSearch_Ing_Group_Screen">
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+        <item>雪山東峰稜脈是雪山山彙六條稜脈中最短的一條，從雪山主峰頂向東岔出後，稍為北偏再向正東經甘木林山</item>
+
+    </string-array>
+
+    <string-array name="groupHistoryGroup_History_Screen">
+        <item>能高山</item>
+        <item>屏風山</item>
+        <item>石門山</item>
+        <item>中雪山</item>
+        <item>磐石山</item>
+        <item>羊頭山</item>
+    </string-array>
+    <string-array name="descriptionGroup_History_Screen">
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+        <item>雪山的登峰活動，就在陳培桂纂修《淡水廳誌》的後1年(同治11年，1872年)，來自加拿大的宣教師，鼎鼎大名的馬偕博士，曾和一位英國軍艦的艦長B.W.Bax。</item>
+    </string-array>
+
+    <string-array name="mountain_list">
+        <item>玉山</item>
+        <item>加里山</item>
+        <item>谷關七雄</item>
+        <item>合歡群峰</item>
+        <item>北大武山</item>
+        <item>能高越嶺</item>
+        <item>能高山</item>
+        <item>屏風山</item>
+        <item>石門山</item>
+        <item>中雪山</item>
+        <item>磐石山</item>
+        <item>羊頭山</item>
+    </string-array>
+
+    <string-array name="mountain_people">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+</resources>

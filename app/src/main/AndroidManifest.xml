@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mountaineering2">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Mountaineering2">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="執行任務頁面"
+            android:parentActivityName=".Search_Ing_Group_Screen_Page2"></activity>
+        <activity android:name=".task_Page" />
+        <activity
+            android:name=".login_failed"
+            android:label="帳號密碼錯誤" />
+        <activity android:name=".set_up1" />
+        <activity
+            android:name=".set_up"
+            android:label="更新基本資料"
+            android:parentActivityName=".member" />
+        <activity
+            android:name=".findPeople"
+            android:label="任務主頁"
+            android:parentActivityName=".homeScreen" />
+        <activity
+            android:name=".Join_Group_Screen"
+            android:label="參加任務"
+            android:parentActivityName=".findPeople" />
+        <activity
+            android:name=".Join_Group_Screen_Page2"
+            android:label="查看任務細節--參與任務"
+            android:parentActivityName=".Join_Group_Screen" />
+        <activity
+            android:name=".Group_History_Screen"
+            android:label="歷史任務"
+            android:parentActivityName=".findPeople" />
+        <activity
+            android:name=".Group_History_Screen_Page2"
+            android:label="歷史任務細節"
+            android:parentActivityName=".Group_History_Screen" />
+        <activity
+            android:name=".Search_Ing_Group_Screen"
+            android:label="選擇將要開始的任務吧！"
+            android:parentActivityName=".findPeople" />
+        <activity
+            android:name=".Create_Group_Screen"
+            android:label="創建任務"
+            android:parentActivityName=".findPeople" />
+        <activity
+            android:name=".Search_Ing_Group_Screen_Page2"
+            android:label="查看任務細節--開始執行任務"
+            android:parentActivityName=".Search_Ing_Group_Screen" />
+        <activity
+            android:name=".Create_Check_Screen"
+            android:label="確認創建任務"
+            android:parentActivityName=".Create_Group_Screen" />
+        <activity
+            android:name=".forgetPage"
+            android:label="忘記密碼第五張"
+            android:parentActivityName=".forgetPage" />
+        <activity
+            android:name=".forgetPage1"
+            android:label="忘記密碼第一張"
+            android:parentActivityName=".forgetPage" />
+        <activity
+            android:name=".forgetPage2"
+            android:label="忘記密碼第三張"
+            android:parentActivityName=".forgetPage" />
+        <activity
+            android:name=".forgetPage3"
+            android:label="忘記密碼第四張" />
+        <activity
+            android:name=".forgetPage4"
+            android:label="忘記密碼第二張"
+            android:parentActivityName=".forgetPage" />
+        <activity
+            android:name=".member"
+            android:label="會員頁面"
+            android:parentActivityName=".homeScreen" />
+        <activity
+            android:name=".homeScreen"
+            android:label="主畫面" />
+        <activity
+            android:name=".registered"
+            android:label="註冊"
+            android:parentActivityName=".sign_in" />
+        <activity
+            android:name=".registered1"
+            android:label="註冊第二張" />
+        <activity
+            android:name=".sign_in"
+            android:label="登入畫面"
+            android:parentActivityName=".homeScreen" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
