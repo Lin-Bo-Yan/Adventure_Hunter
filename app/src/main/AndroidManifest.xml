@@ -23,7 +23,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="執行任務頁面"
+            android:parentActivityName=".Search_Ing_Group_Screen_Page2"></activity>
         <activity android:name=".task_Page" />
         <activity
             android:name=".login_failed"
