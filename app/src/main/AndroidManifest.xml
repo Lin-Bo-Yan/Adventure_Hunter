@@ -16,17 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-        <activity android:name=".MainActivity2"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="執行任務頁面"
-            android:parentActivityName=".Search_Ing_Group_Screen_Page2" />
-        <activity android:name=".task_Page" />
+        <activity android:name=".task_Page"
+            android:label="任務頁面" />
         <activity
             android:name=".login_failed"
             android:label="帳號密碼錯誤" />
