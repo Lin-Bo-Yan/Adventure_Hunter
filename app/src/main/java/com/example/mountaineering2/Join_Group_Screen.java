@@ -85,7 +85,7 @@ public class Join_Group_Screen extends AppCompatActivity {
 
     public void reciveGroupInfo() {
         OkHttpClient client = new OkHttpClient();
-        String url = "https://77b50924d55f.ngrok.io/api/groups";
+        String url = "https://64a039731c6b.ngrok.io/api/groups";
 
         Request request = new Request.Builder()
                 .url(url)

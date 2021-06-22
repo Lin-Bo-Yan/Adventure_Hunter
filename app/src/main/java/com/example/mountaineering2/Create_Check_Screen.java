@@ -9,9 +9,26 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class Create_Check_Screen extends AppCompatActivity {
     TextView dateShow, mountainShow, peopleShow, sayShow, name, point;
     String pointString;
+    String date, mountain, people, say, name_mountain;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +47,11 @@ public class Create_Check_Screen extends AppCompatActivity {
 
     private void showResult() {
         Bundle bundle = getIntent().getExtras();
-        String date = bundle.getString("date");
-        String mountain = bundle.getString("mountain");
-        String people = bundle.getString("people");
-        String say = bundle.getString("sayText");
-        String name_mountain = bundle.getString("namemountain");
+        date = bundle.getString("date");
+        mountain = bundle.getString("mountain");
+        people = bundle.getString("people");
+        say = bundle.getString("sayText");
+        name_mountain = bundle.getString("namemountain");
         int i = Integer.parseInt(people);
         pointString = Integer.toString(i * 100);
 
@@ -59,7 +76,46 @@ public class Create_Check_Screen extends AppCompatActivity {
     public void goToGroupIngList(View view) {
         Intent intent = new Intent();
         intent.setClass(Create_Check_Screen.this, Search_Ing_Group_Screen.class);
-        startActivity(intent);
+        postHttp();
         Toast.makeText(Create_Check_Screen.this, "創建成功，前往任務頁面執行任務吧!", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+    }
+
+    private void postHttp() {
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://64a039731c6b.ngrok.io/api/groups";
+
+        Integer ran = ((int)(Math.random()*49+1));
+
+        Map<String, String> map =new HashMap();
+        map.put("creator_id", ran.toString());
+        map.put("start_date", date);
+        map.put("mountain_name", mountain);
+        map.put("description", say);
+        map.put("name", name_mountain);
+        map.put("points", pointString);
+
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Log.v("joe", "response== "+response.body().string());
+                }
+            }
+        });
     }
 }
