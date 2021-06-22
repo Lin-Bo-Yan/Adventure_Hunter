@@ -2,7 +2,9 @@ package com.example.mountaineering2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,24 +12,22 @@ import android.widget.TextView;
 public class member extends AppCompatActivity {
     String realname,cash,email,birth,ID,phone;
     TextView member_name,member_Points,member_birthBay,member_email,member_ID,member_phone;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.member);
 
+        sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+         realname=sp.getString("realname","");
+         cash=sp.getString("cash","");
+         email=sp.getString("email","");
+         birth=sp.getString("birth","");
+         ID=sp.getString("ID","");
+         phone=sp.getString("phone","");
+        ff();
 
-        //把從登入那邊的資料傳到這裡顯示出來
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle!=null){
-            realname=bundle.getString("realname");
-            cash=bundle.getString("cash");
-            email=bundle.getString("email");
-            birth=bundle.getString("birth");
-            ID=bundle.getString("id");
-            phone=bundle.getString("phone");
-            ff();
-        }
     }
 
 
@@ -47,6 +47,7 @@ public class member extends AppCompatActivity {
     }
 
 
+
     //-------去到設定
     public void go_set_up(View view) {
         Intent goToSetUp = new Intent(member.this,set_up.class);
@@ -55,4 +56,20 @@ public class member extends AppCompatActivity {
         goToSetUp.putExtras(bundle);
         startActivity(goToSetUp);
     }
+
+    /*
+        //把從登入那邊的資料傳到這裡顯示出來
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle!=null){
+            realname=bundle.getString("realname");
+            cash=bundle.getString("cash");
+            email=bundle.getString("email");
+            birth=bundle.getString("birth");
+            ID=bundle.getString("id");
+            phone=bundle.getString("phone");
+        }
+
+ */
+
+
 }

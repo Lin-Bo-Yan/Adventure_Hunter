@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,11 +38,9 @@ public class sign_in extends AppCompatActivity {
     private TextView registered,forgetPassWord;
     private TextInputLayout Account,passWord;
     private Button loginIn;
+    SharedPreferences sp;
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
-    //----------------宣告帳號密碼---------
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +68,8 @@ public class sign_in extends AppCompatActivity {
             public void onClick(View v) {openforgetPage();}
         });
 
+        sp=getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+
     }
     //----------註冊-------------------------
     public void openRegistered(){
@@ -95,7 +96,7 @@ public class sign_in extends AppCompatActivity {
         String acc=Account.getEditText().getText().toString().trim();
 /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url("https://93746b875472.ngrok.io/"+"/api/users/account/"+acc)
+                .url("https://e3b4783901b7.ngrok.io"+"/api/users/account/"+acc)
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);
@@ -144,19 +145,18 @@ public class sign_in extends AppCompatActivity {
                 String id_json=root.getString("id");
                 String phone_json= root.getString("phone");
                 if(user.equals(acc_json)&pass.equals(pass_json)){
-                    //建立意圖物件Intent
-                    Intent goToMember = new Intent(sign_in.this,member.class);
-                    //用資料捆傳遞資料
-                    Bundle bundle = new Bundle();
-                    bundle.putString("realname",realname_json);
-                    bundle.putString("cash",cash_json);
-                    bundle.putString("email",email_json);
-                    bundle.putString("birth",birth_json);
-                    bundle.putString("id",id_json);
-                    bundle.putString("phone",phone_json);
-                    goToMember.putExtras(bundle);
-                    //會帶你到該頁面
-                    startActivity(goToMember);
+                //利用 SharedPreferences 儲存變數
+                    SharedPreferences.Editor editor=sp.edit();
+                    editor.putString("realname",realname_json);
+                    editor.putString("cash",cash_json);
+                    editor.putString("email",email_json);
+                    editor.putString("birth",birth_json);
+                    editor.putString("ID",id_json);
+                    editor.putString("phone",phone_json);
+                    editor.commit();
+
+                    openMember();
+
                 }else {
                     //多做一個頁面顯示登入失敗，因為用警告窗會 beginning of crash
                     login_failed();
@@ -177,4 +177,26 @@ public class sign_in extends AppCompatActivity {
         imm.hideSoftInputFromWindow(findViewById(R.id.Sign_in_Page).getWindowToken(), 0);
     }
 
+
+    /*
+    //-------資料透過intent傳到別的頁面，缺點是不能留住變數
+    private void intent(){
+
+                    //建立意圖物件Intent
+                    Intent goToMember = new Intent(sign_in.this,member.class);
+                    //用資料捆傳遞資料
+                    Bundle bundle = new Bundle();
+                    bundle.putString("realname",realname_json);
+                    bundle.putString("cash",cash_json);
+                    bundle.putString("email",email_json);
+                    bundle.putString("birth",birth_json);
+                    bundle.putString("id",id_json);
+                    bundle.putString("phone",phone_json);
+                    goToMember.putExtras(bundle);
+                    //會帶你到該頁面
+                    startActivity(goToMember);
+
+
+    }
+*/
 }

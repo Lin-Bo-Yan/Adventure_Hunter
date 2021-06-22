@@ -55,7 +55,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/ic_cash" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#000"
-            android:textSize="10dp"/>
+            android:textSize="15dp"/>
 
 
     </LinearLayout>
@@ -84,7 +84,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/ic_cake" />
         <TextView
             android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#000"
-            android:textSize="10dp"/>
+            android:textSize="15dp"/>
 
     </LinearLayout>
 
@@ -111,7 +111,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/ic_email" />
         <TextView
             android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#000"
-            android:textSize="10dp"/>
+            android:textSize="15dp"/>
 
 
 
@@ -140,7 +140,7 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/ic_iphone"/>
         <TextView
             android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#000"
-            android:textSize="10dp"/>
+            android:textSize="15dp"/>
 
 
 
@@ -171,7 +171,7 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/ic_settings" />
 
         <TextView
