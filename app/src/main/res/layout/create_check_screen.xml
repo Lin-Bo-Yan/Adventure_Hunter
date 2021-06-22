@@ -8,39 +8,65 @@
 
     <TextView
         android:id="@+id/dateCheck"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dateCheck5"
-        android:layout_width="154dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="190dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="60dp"
-        android:text="您想任務的日期為:"
-        android:textSize="18sp"
+        android:text="您創建任務的日期為:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dateCheck6"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
+        android:id="@+id/textView5"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
-        android:text="您想爬的山為:"
-        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:text="創建團名"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateCheck5" />
+
+    <TextView
+        android:id="@+id/textname"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck" />
+
+    <TextView
+        android:id="@+id/dateCheck6"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:text="您想爬的山為:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/dateCheck7"
@@ -48,45 +74,47 @@
         android:layout_height="58dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         android:text="想揪的人數為\n(包含自己):"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateCheck6" />
 
     <TextView
         android:id="@+id/dateCheck8"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="想說的話:"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/mountainShow"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/textname" />
 
     <TextView
         android:id="@+id/peopleShow"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mountainShow" />
 
@@ -96,11 +124,11 @@
         android:layout_height="79dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateCheck8" />
@@ -109,7 +137,7 @@
         android:id="@+id/submitCreate"
         android:layout_width="118dp"
         android:layout_height="67dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:onClick="goToGroupIngList"
@@ -124,11 +152,36 @@
         android:layout_height="67dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:onClick="backToCreate"
         android:text="回上一頁"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sayShow" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:text="預計將得到點數"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateCheck7" />
+
+    <TextView
+        android:id="@+id/textpoint"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/peopleShow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
