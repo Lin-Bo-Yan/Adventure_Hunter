@@ -24,7 +24,8 @@ public class Create_Group_Screen extends AppCompatActivity {
 
     String s1[];
     String s2[];
-    EditText createSay;
+    EditText createSay = null;
+    EditText mountainName = null;
     String spinner1;
     String spinner2;
     TextView dateText;
@@ -38,6 +39,7 @@ public class Create_Group_Screen extends AppCompatActivity {
         setContentView(R.layout.create_group_screen);
 
         createSay = findViewById(R.id.createSay);
+        mountainName = findViewById(R.id.mountainName);
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
         Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -58,7 +60,7 @@ public class Create_Group_Screen extends AppCompatActivity {
         spinner2.setAdapter(lunchList2);
 
 
-        dateText = (TextView) findViewById(R.id.dateText);
+        dateText = (TextView) findViewById(R.id.textView3);
         Button dateButton = (Button) findViewById(R.id.dateButton);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,10 +70,10 @@ public class Create_Group_Screen extends AppCompatActivity {
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog pickerDialog =new DatePickerDialog(Create_Group_Screen.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog pickerDialog = new DatePickerDialog(Create_Group_Screen.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        String format = "您所選的日期為:" + setDateFormat(year, month, day);
+                        String format = "所選的日期為:" + setDateFormat(year, month, day);
                         dateText.setText(format);
                         data = setDateFormat(year, month, day);
                     }
@@ -82,6 +84,7 @@ public class Create_Group_Screen extends AppCompatActivity {
             }
         });
     }
+
     Spinner.OnItemSelectedListener listener = new Spinner.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -113,28 +116,43 @@ public class Create_Group_Screen extends AppCompatActivity {
     }
 
     public void submitCreate(View view) {
+        String date = data.toString();
+        String mountain = spinner1.toString();
+        String people = spinner2.toString();
+        String saySome;
+        String nameMountain;
 
-        if (data != null){
-            String date = data.toString();
-            String mountain = spinner1.toString();
-            String people = spinner2.toString();
-            String saySome;
+        nameMountain = mountainName.getText().toString();
+        saySome = createSay.getText().toString();
 
-            saySome = createSay.getText().toString();
+
+        if (data != null && !nameMountain.isEmpty()) {
             Intent intent = new Intent(this, Create_Check_Screen.class);
             Bundle bundle = new Bundle();
             bundle.putString("date", date);
             bundle.putString("mountain", mountain);
             bundle.putString("people", people);
-            bundle.putString("sayText", saySome);
+            bundle.putString("namemountain", nameMountain);
+            if (!saySome.isEmpty()) {
+                bundle.putString("sayText", saySome);
+                Log.v("joe", "track= "+saySome);
+            }else{
+                saySome = "沒有特別想說的話";
+                bundle.putString("sayText", saySome);
+                Log.v("joe", "sayEmpty= "+saySome);
+            }
+            Log.v("joe", "saysome= " + saySome.isEmpty());
+            Log.v("joe","date= "+date);
+
 
             intent.putExtras(bundle);
             startActivity(intent);
-        }else{
-            Toast.makeText(this,"請檢查是否填寫正確資料", Toast.LENGTH_SHORT).show();
-            Log.v("joe","test else");
+        } else {
+            Toast.makeText(Create_Group_Screen.this, "請檢查是否填寫正確資料", Toast.LENGTH_SHORT).show();
+            Log.v("joe", "test else");
         }
     }
+
     public void CloseInputKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(findViewById(R.id.Create_bg).getWindowToken(), 0);

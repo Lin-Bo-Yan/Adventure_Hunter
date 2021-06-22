@@ -14,85 +14,74 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="103dp"
-        android:layout_height="26dp"
-        android:layout_marginBottom="520dp"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="150dp"
         android:text="任務日期 :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/dateButton"
         android:layout_width="103dp"
         android:layout_height="46dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="選擇日期"
         app:backgroundTint="#2196F3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:layout_marginLeft="25dp" />
-
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="152dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginBottom="30dp"
-        android:text="您選擇的日期"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/dateButton"
-        android:layout_marginLeft="90dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="167dp"
         android:layout_height="33dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
         android:text="想爬哪座山 :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="152dp"
+        android:layout_width="167dp"
         android:layout_height="33dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/dateText"
-        android:layout_marginLeft="35dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mountainName" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="152dp"
+        android:layout_width="167dp"
         android:layout_height="33dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1"
-        android:layout_marginLeft="35dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="167dp"
         android:layout_height="33dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:text="想揪幾個人 :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -100,12 +89,12 @@
         android:id="@+id/textView6"
         android:layout_width="167dp"
         android:layout_height="33dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:text="想說的話 :"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -123,6 +112,19 @@
     <!--        app:layout_constraintTop_toBottomOf="@+id/editText" />-->
 
     <EditText
+        android:id="@+id/mountainName"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="取個有趣的團名吧!"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:gravity="center"></EditText>
+
+    <EditText
         android:id="@+id/createSay"
         android:layout_width="380dp"
         android:layout_height="73dp"
@@ -138,7 +140,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="279dp"
         android:layout_marginLeft="279dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
         android:onClick="submitCreate"
@@ -148,6 +150,29 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createSay" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="任務團名:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="110dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createSay"
+        app:srcCompat="@drawable/hiking_one" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
