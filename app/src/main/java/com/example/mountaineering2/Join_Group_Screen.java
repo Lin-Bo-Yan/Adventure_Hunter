@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,15 +23,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Join_Group_Screen extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
+    String myResponse;
 
-    ArrayList<String> moviesList;
-    ArrayList<String> moviesList2;
+
+
+    public ArrayList<String> moviesList;
+    public ArrayList<String> moviesList2;
 
     private int images[] = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
             R.drawable.baydawushan, R.drawable.namguashan};
@@ -39,32 +55,115 @@ public class Join_Group_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_group_screen);
+        recyclerView = findViewById(R.id.recyclerView);
+
+
 
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
-        moviesList.add("合歡群峰");
-        moviesList.add("北大武山");
-        moviesList.add("玉山");
-        moviesList.add("谷關七雄");
-        moviesList.add("合歡群峰");
-        moviesList.add("北大武山");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 200 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 300 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 400 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 300 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
+        reciveGroupInfo();
+//        moviesList.add("合歡群峰");
+//        moviesList.add("北大武山");
+//        moviesList.add("玉山");
+//        moviesList.add("谷關七雄");
+//        moviesList.add("合歡群峰");
+//        moviesList.add("北大武山");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 200 點");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 400 點");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");
+        Log.v("joe", "name= "+moviesList);
+        Log.v("joe", "des= "+moviesList2);
 
 
-
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(this, moviesList, moviesList2, images);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(recyclerAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
     }
+
+    public void reciveGroupInfo() {
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://77b50924d55f.ngrok.io/api/groups";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    myResponse = response.body().string();
+
+                    Log.v("joe", "Json" + myResponse);
+
+                    Join_Group_Screen.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            parseJson(myResponse);
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+
+    public void parseJson(String myResponse) {
+
+        try {
+            JSONArray jsonArray = new JSONArray(myResponse);
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Integer id = jsonObject.getInt("id");
+                String creator_id = jsonObject.getString("creator_id");
+                String name = jsonObject.getString("name");
+                String slug = jsonObject.getString("slug");
+                String description = jsonObject.getString("description");
+                String status = jsonObject.getString("status");
+                String parent_id = jsonObject.getString("parent_id");
+                String enable_forum = jsonObject.getString("enable_forum");
+                String date_created = jsonObject.getString("date_created");
+                String start_date = jsonObject.getString("start_date");
+                String mountain_name = jsonObject.getString("mountain_name");
+                String total_num = jsonObject.getString("total_num");
+                String image = jsonObject.getString("image");
+                String attendee = jsonObject.getString("attendee");
+                String points = jsonObject.getString("points");
+                String start_time = jsonObject.getString("start_time");
+                String finish_time = jsonObject.getString("finish_time");
+                String total_time = jsonObject.getString("total_time");
+                String start_lat = jsonObject.getString("start_lat");
+                String start_lng = jsonObject.getString("start_lng");
+                String finish_lat = jsonObject.getString("finish_lat");
+                String finish_lng = jsonObject.getString("finish_lng");
+
+                moviesList.add(name);
+                moviesList2.add(description);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.v("joe", "nameBotton= "+moviesList);
+        Log.v("joe", "desBotton= "+moviesList2);
+        recyclerAdapter = new RecyclerAdapter(this, moviesList, moviesList2, images);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recyclerAdapter);
+
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -101,7 +200,7 @@ public class Join_Group_Screen extends AppCompatActivity {
         public RecyclerAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, int images[]) {
             this.context = context;
             this.moviesList = moviesList;
-            this.moviesList2=moviesList2;
+            this.moviesList2 = moviesList2;
             this.images = images;
             moviesListAll = new ArrayList<>();
             moviesListAll.addAll(moviesList);
@@ -156,7 +255,7 @@ public class Join_Group_Screen extends AppCompatActivity {
                 if (charSequence == null || charSequence.length() == 0) {
                     filteredList.addAll(moviesListAll);
                 } else {
-                    for (String movie: moviesListAll) {
+                    for (String movie : moviesListAll) {
                         if (movie.toLowerCase().contains(charSequence.toString().toLowerCase())) {
                             filteredList.add(movie);
                         }
@@ -176,7 +275,6 @@ public class Join_Group_Screen extends AppCompatActivity {
                 notifyDataSetChanged();
             }
         };
-
 
 
         class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

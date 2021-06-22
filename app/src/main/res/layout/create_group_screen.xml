@@ -8,7 +8,8 @@
     android:orientation="vertical"
     tools:context=".Create_Group_Screen"
     android:id="@+id/Create_bg"
-    android:onClick="CloseInputKeyboard">
+    android:onClick="CloseInputKeyboard"
+    android:background="#A0D2D8">
 
 
     <TextView
