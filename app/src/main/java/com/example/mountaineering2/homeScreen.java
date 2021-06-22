@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class homeScreen extends AppCompatActivity {
 
@@ -34,7 +34,16 @@ public class homeScreen extends AppCompatActivity {
         tataga = (ImageView) findViewById(R.id.tataga);
         tataga.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {member_profile();}
+            public void onClick(View v) {
+                ID=sp.getString("ID","");
+                if(ID==""){
+                    member_profile();
+                }else {
+                    go_member();
+                }
+
+
+            }
         });
 
     }
@@ -51,13 +60,14 @@ public class homeScreen extends AppCompatActivity {
         Intent intent = new Intent(this, sign_in.class);
         startActivity(intent);
     }
-    //去到會員資料
+    //登出會員
     public void go_member(View view) {
-        Intent intent = new Intent(this, member.class);
-        startActivity(intent);
-
+        SharedPreferences.Editor editor=sp.edit();
+        editor.remove("ID");
+        editor.commit();
+        Toast.makeText(homeScreen.this,"會員登出",Toast.LENGTH_SHORT);
     }
-
+    //去到會員資料
     public void go_member() {
         Intent intent = new Intent(this, member.class);
         startActivity(intent);
