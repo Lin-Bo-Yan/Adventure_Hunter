@@ -73,7 +73,7 @@ public class set_up extends AppCompatActivity {
 
         // 建立Request，設置連線資訊
         Request request = new Request.Builder()
-                .url(""+"/api/users/"+ID)
+                .url("https://93746b875472.ngrok.io/"+"/api/users/"+ID)
                 .put(body)
                 .build();
 

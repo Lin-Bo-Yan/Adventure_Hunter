@@ -34,15 +34,6 @@ public class homeScreen extends AppCompatActivity {
             public void onClick(View v) {member_profile();}
         });
 
-        /*
-        //把從登入那邊的資料傳到這裡顯示出來
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle!=null){
-             name=bundle.getString("realname");
-        }
-        usname=findViewById(R.id.usname);
-        usname.setText(name);
-        */
     }
 
     //任務
@@ -59,8 +50,8 @@ public class homeScreen extends AppCompatActivity {
     }
     //去到member
     public void go_member(View view) {
-        //Intent intent = new Intent(this, member.class);
-       // startActivity(intent);
+        Intent intent = new Intent(this, member.class);
+        startActivity(intent);
 
     }
 }
