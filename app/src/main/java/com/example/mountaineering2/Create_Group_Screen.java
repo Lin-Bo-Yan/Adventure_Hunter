@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -130,7 +131,8 @@ public class Create_Group_Screen extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
         }else{
-            Toast.makeText(Create_Group_Screen.this, "請檢查是否填寫正確資訊", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"請檢查是否填寫正確資料", Toast.LENGTH_SHORT).show();
+            Log.v("joe","test else");
         }
     }
     public void CloseInputKeyboard(View view) {
