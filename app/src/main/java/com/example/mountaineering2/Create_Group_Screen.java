@@ -131,7 +131,7 @@ public class Create_Group_Screen extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
         }else{
-            Toast.makeText(this,"asdff請檢查是否填寫正確資料", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"請檢查是否填寫正確資料", Toast.LENGTH_SHORT).show();
             Log.v("joe","test else");
         }
     }
