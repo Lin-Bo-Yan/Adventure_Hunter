@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,9 +49,11 @@ public class Join_Group_Screen extends AppCompatActivity {
 
     public ArrayList<String> moviesList;
     public ArrayList<String> moviesList2;
+    public ArrayList<String> images;
 
-    private int images[] = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
-            R.drawable.baydawushan, R.drawable.namguashan};
+//    private int images[] ;
+//            = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
+//            R.drawable.baydawushan, R.drawable.namguashan};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class Join_Group_Screen extends AppCompatActivity {
 
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
+        images = new ArrayList<>();
         reciveGroupInfo();
 //        moviesList.add("合歡群峰");
 //        moviesList.add("北大武山");
@@ -73,9 +78,7 @@ public class Join_Group_Screen extends AppCompatActivity {
 //        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
 //        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 400 點");
 //        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");
-        Log.v("joe", "name= "+moviesList);
-        Log.v("joe", "des= "+moviesList2);
+//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");Log.v("joe", "name= "+moviesList);
 
 
 
@@ -85,7 +88,7 @@ public class Join_Group_Screen extends AppCompatActivity {
 
     public void reciveGroupInfo() {
         OkHttpClient client = new OkHttpClient();
-        String url = "https://64a039731c6b.ngrok.io/api/groups";
+        String url = "https://450d0ac08887.ngrok.io/api/groups";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -149,13 +152,14 @@ public class Join_Group_Screen extends AppCompatActivity {
 
                 moviesList.add(name);
                 moviesList2.add(description);
+                images.add(image);
 
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("joe", "nameBotton= "+moviesList);
-        Log.v("joe", "desBotton= "+moviesList2);
+        Log.v("joe","images== "+images);
+
         recyclerAdapter = new RecyclerAdapter(this, moviesList, moviesList2, images);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recyclerAdapter);
@@ -195,9 +199,10 @@ public class Join_Group_Screen extends AppCompatActivity {
         ArrayList<String> moviesList;
         ArrayList<String> moviesList2;
         ArrayList<String> moviesListAll;
-        int images[];
+        ArrayList<String> images;
+//        int images[];
 
-        public RecyclerAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, int images[]) {
+        public RecyclerAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images) {
             this.context = context;
             this.moviesList = moviesList;
             this.moviesList2 = moviesList2;
@@ -219,7 +224,10 @@ public class Join_Group_Screen extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.rowCountTextView.setText(moviesList2.get(position));
             holder.textView.setText(moviesList.get(position));
-            holder.imageView.setImageResource(images[position]);
+//            holder.imageView.setImageResource(images[position]);
+
+            Picasso.get().load(images.get(position)).into(holder.imageView) ;
+
 
             holder.mainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -227,7 +235,8 @@ public class Join_Group_Screen extends AppCompatActivity {
                     Intent intent = new Intent(context, Join_Group_Screen_Page2.class);
                     intent.putExtra("data1", moviesList.get(position));
                     intent.putExtra("data2", moviesList2.get(position));
-                    intent.putExtra("myImage", images[position]);
+//                    intent.putExtra("myImage", images[position]);
+                    intent.putExtra("myImage", images.get(position));
                     context.startActivity(intent);
                 }
             });

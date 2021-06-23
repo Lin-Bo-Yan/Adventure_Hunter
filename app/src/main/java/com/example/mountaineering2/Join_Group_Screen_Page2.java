@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class Join_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageView;
     TextView title, descriptionJoin_Group_Screen_Page2;
     String data1, data2;
-    int myImage;
+//    int myImage;
+    String myImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,8 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
             //產生資料
             data1 = getIntent().getStringExtra("data1");
             data2 = getIntent().getStringExtra("data2");
-            myImage = getIntent().getIntExtra("myImage", 1);
-
+//            myImage = getIntent().getIntExtra("myImage", 1);
+            myImage = getIntent().getStringExtra("myImage");
         }else{
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
         }
@@ -50,7 +53,8 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
         //輸出版面
         title.setText(data1);
         descriptionJoin_Group_Screen_Page2.setText(data2);
-        mainImageView.setImageResource(myImage);
+//        mainImageView.setImageResource(myImage);
+        Picasso.get().load(myImage).into(mainImageView);
     }
 
 
