@@ -59,6 +59,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class task_Page extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -72,8 +78,8 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public static final double END_POI_LAT = 25.1708318;
-    public static final double END_POI_LNG = 121.5358237;
+    public static final double END_POI_LAT = 25.1708318;//經緯度
+    public static final double END_POI_LNG = 121.5358237;//經緯度
     transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm分ss秒");
 
     private GoogleMap mMap;
@@ -107,14 +113,19 @@ public class task_Page extends AppCompatActivity implements
     private long endTime;
     private long runTime;
     private Handler mTimeHandler = new Handler();
+
+    //---時間取得
     private final Runnable mTimeRunner = new Runnable() {
         @Override
         public void run() {
-            runTime = System.currentTimeMillis() - startTime;
+            runTime = System.currentTimeMillis() - startTime; //現在時間減最初時間
             time_tv.setText("經過時間：00時" + dateFormat.format(runTime));
             mTimeHandler.postDelayed(mTimeRunner, 1000);
         }
     };
+
+    // 建立OkHttpClient
+    OkHttpClient client = new OkHttpClient().newBuilder().build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +170,7 @@ public class task_Page extends AppCompatActivity implements
         time_tv = findViewById(R.id.activity_main_time_tv);
         distance_tv = findViewById(R.id.activity_main_distance_tv);
 
+        //開始時間
         startNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +184,7 @@ public class task_Page extends AppCompatActivity implements
             }
         });
 
+        //停止時間
         stopNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,7 +219,7 @@ public class task_Page extends AppCompatActivity implements
         LatLng origin = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         LatLng dest = new LatLng(lat, lng);
 
-        // Getting URL to the Google Directions API
+        // Getting URL to the Google Directions API  開通路線規劃
         String url = getDirectionsUrl(origin, dest);
         DownloadTask downloadTask = new DownloadTask();
 
@@ -350,7 +363,7 @@ public class task_Page extends AppCompatActivity implements
         }
 
     }
-
+    //---------清除谷歌路線
     private void clearGoogleRoute() {
         if (mPolyline != null) {
             mPolyline.remove();
@@ -372,6 +385,7 @@ public class task_Page extends AppCompatActivity implements
         }
     }
 
+    //----------------檢查位置服務
     private void checkLocationService() {
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -399,6 +413,7 @@ public class task_Page extends AppCompatActivity implements
         }
     }
 
+    //-----------------確保權限 使用者定位
     private void ensurePermissions() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_COARSE_LOCATION);
@@ -415,22 +430,25 @@ public class task_Page extends AppCompatActivity implements
             getLocationFromGoogle();
         }
     }
-
+    //--------------------從谷歌獲取位置
     private void getLocationFromGoogle() {
         if (mGoogleApiClient != null && !mGoogleApiClient.isConnected()) {
             mGoogleApiClient.connect();
         }
     }
 
+    //-------------------在信息窗口關閉
     @Override
     public void onInfoWindowClose(Marker marker) {
         collapseBottomSheet();
     }
 
+    //--------------------折疊底頁
     private void collapseBottomSheet() {
         mBottomSheetBehavior.setPeekHeight(0);
     }
 
+    //------------------地圖就緒
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -459,6 +477,7 @@ public class task_Page extends AppCompatActivity implements
             }
         });
 
+        //----------------在地圖上設置點擊監聽器
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -495,12 +514,14 @@ public class task_Page extends AppCompatActivity implements
 //                Toast.LENGTH_SHORT).show();
     }
 
+    //------------在位置改變 使用者位置更新時候做的事情
     @Override
     public void onLocationChanged(Location location) {
         mLastLocation = location;
         showUserPosition();
     }
 
+    //------顯示用戶位置
     private void showUserPosition() {
         if (!mIsMapInited && mMapFragment != null) {
             mIsMapInited = true;
@@ -514,6 +535,7 @@ public class task_Page extends AppCompatActivity implements
                         * 1000) / 1000.0) + "公里");
     }
 
+    //--------添加使用戶標記
     private void addUserMarker(LatLng position, Location location) {
         if (mMap == null) {
             return;
@@ -542,6 +564,7 @@ public class task_Page extends AppCompatActivity implements
         }
     }
 
+    //----------已連接
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -569,6 +592,7 @@ public class task_Page extends AppCompatActivity implements
 
     }
 
+//------獲取距離
     private double getDistance(double routePointALat, double routePointALon, double routePointBLat, double routePointBLon) {
 
         Location l1 = new Location("One");
@@ -589,4 +613,41 @@ public class task_Page extends AppCompatActivity implements
 
         return distance;
     }
+    //---------------------get方法取得山的經緯度-------------------------------------------------------------------
+
+    private void setGET(){
+
+        /**設置傳送需求*/
+        Request request = new Request.Builder()
+                .url("https://7ad61a289fe3.ngrok.io"+"/api/groups/")
+                .build();
+        /**設置回傳*/
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                /**如果傳送過程有發生錯誤*/
+                e.printStackTrace();
+                Log.v("joe", "Bad== " + e);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                /**取得回傳*/
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+                    //Log.v("joe", "OK==  " + myResponse);
+
+                }else {
+
+                    Log.e("joe",response.body().string());
+                }
+
+            }
+        });
+
+    }
+
+
+
 }
