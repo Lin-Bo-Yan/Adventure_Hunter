@@ -80,7 +80,7 @@ public class Join_Group_Screen extends AppCompatActivity {
         String url1 = sp.getString("url",null);
         String urlId =sp.getString("ID", "42");
         OkHttpClient client = new OkHttpClient();
-        String url = url1+"/api/groups/ing/"+urlId;
+        String url = url1+"/api/groups/join/"+urlId;
 
         Request request = new Request.Builder()
                 .url(url)

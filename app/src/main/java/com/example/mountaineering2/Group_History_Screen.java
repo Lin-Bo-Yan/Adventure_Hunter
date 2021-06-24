@@ -151,48 +151,9 @@ public class Group_History_Screen extends AppCompatActivity {
         }
         Log.v("joe","images== "+images);
 
-        try {
-            JSONArray jsonArray = new JSONArray(myResponse);
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Integer id = jsonObject.getInt("id");
-                String creator_id = jsonObject.getString("creator_id");
-                String name = jsonObject.getString("name");
-                String slug = jsonObject.getString("slug");
-                String description = jsonObject.getString("description");
-                String status = jsonObject.getString("status");
-                String parent_id = jsonObject.getString("parent_id");
-                String enable_forum = jsonObject.getString("enable_forum");
-                String date_created = jsonObject.getString("date_created");
-                String start_date = jsonObject.getString("start_date");
-                String mountain_name = jsonObject.getString("mountain_name");
-                String total_num = jsonObject.getString("total_num");
-                String image = jsonObject.getString("image");
-                String attendee = jsonObject.getString("attendee");
-                String points = jsonObject.getString("points");
-                String start_time = jsonObject.getString("start_time");
-                String finish_time = jsonObject.getString("finish_time");
-                String total_time = jsonObject.getString("total_time");
-                String start_lat = jsonObject.getString("start_lat");
-                String start_lng = jsonObject.getString("start_lng");
-                String finish_lat = jsonObject.getString("finish_lat");
-                String finish_lng = jsonObject.getString("finish_lng");
-
-                moviesList.add(name);
-                moviesList2.add(description);
-                images.add(image);
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Log.v("joe","images== "+images);
         myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
-
-
 
     }
 

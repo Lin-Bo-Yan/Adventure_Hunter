@@ -53,7 +53,7 @@ public class findPeople extends AppCompatActivity {
             public void onClick(View v) {
                 if (Id != null){
                     Intent intent = new Intent();
-                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    intent.setClass(findPeople.this, Join_Group_Screen.class);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent();
@@ -74,7 +74,7 @@ public class findPeople extends AppCompatActivity {
             public void onClick(View v) {
                 if (Id != null){
                     Intent intent = new Intent();
-                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    intent.setClass(findPeople.this, Group_History_Screen.class);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent();
@@ -92,7 +92,7 @@ public class findPeople extends AppCompatActivity {
             public void onClick(View v) {
                 if (Id != null){
                     Intent intent = new Intent();
-                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    intent.setClass(findPeople.this, Search_Ing_Group_Screen.class);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent();
