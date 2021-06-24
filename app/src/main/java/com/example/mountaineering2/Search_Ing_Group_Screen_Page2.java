@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageViewSearch_Ing_Group_Screen_Page2;
     TextView titleSearch_Ing_Group_Screen_Page2, descriptionSearch_Ing_Group_Screen_Page2;
     String data3, data4, imagesPage4;
+    int groupId;
 
 
     @Override
@@ -40,6 +42,8 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
             data3 = getIntent().getStringExtra("data1Page4");
             data4 = getIntent().getStringExtra("data2Page4");
             imagesPage4 = getIntent().getStringExtra("myImagePage4");
+            groupId = getIntent().getIntExtra("groupId",1);
+            Log.v("joe", "Id= "+groupId);
 
         } else {
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
@@ -85,11 +89,9 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
         alert.setPositiveButton("前往任務畫面", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Intent intent = new Intent();
-//                intent.setClass(Search_Ing_Group_Screen_Page2.this, xxx.class);
-//                startActivity(intent);
                 Toast.makeText(Search_Ing_Group_Screen_Page2.this, "開始任務，祝您順利!!", Toast.LENGTH_SHORT).show();
-                Intent intent =new Intent(Search_Ing_Group_Screen_Page2.this,task_Page.class);
+                Intent intent =new Intent(Search_Ing_Group_Screen_Page2.this, task_Page.class);
+                intent.putExtra("GroupId", groupId);
                 startActivity(intent);
             }
         });

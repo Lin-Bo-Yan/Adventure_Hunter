@@ -49,6 +49,7 @@ import okhttp3.Response;
         private ArrayList<String> moviesList2;
         public ArrayList<String> images;
         String myResponse;
+        ArrayList<Integer> groupId;
 
 
     @Override
@@ -61,6 +62,7 @@ import okhttp3.Response;
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
         images = new ArrayList<>();
+        groupId = new ArrayList<>();
         recyclerView = findViewById(R.id.groupIngSearch_Ing_Group);
 
         reciveIngGroup();
@@ -140,6 +142,7 @@ import okhttp3.Response;
                     moviesList.add(name);
                     moviesList2.add(description);
                     images.add(image);
+                    groupId.add(id);
 
                 }
             } catch (JSONException e) {
@@ -221,6 +224,7 @@ import okhttp3.Response;
                         intent.putExtra("data1Page4", moviesList.get(position));
                         intent.putExtra("data2Page4", moviesList2.get(position));
                         intent.putExtra("myImagePage4", images.get(position));
+                        intent.putExtra("groupId", groupId.get(position));
                         context.startActivity(intent);
                     }
                 });
