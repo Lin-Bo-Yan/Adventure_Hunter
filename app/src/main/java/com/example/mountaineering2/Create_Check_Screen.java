@@ -3,6 +3,7 @@ package com.example.mountaineering2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,20 +76,22 @@ public class Create_Check_Screen extends AppCompatActivity {
 
     public void goToGroupIngList(View view) {
         Intent intent = new Intent();
-        intent.setClass(Create_Check_Screen.this, Search_Ing_Group_Screen.class);
+        intent.setClass(Create_Check_Screen.this, findPeople.class);
         postHttp();
-        Toast.makeText(Create_Check_Screen.this, "創建成功，前往任務頁面執行任務吧!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Create_Check_Screen.this, "創建成功，準備去執行任務囉!", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 
     private void postHttp() {
+        SharedPreferences sp =getSharedPreferences("MyUser", MODE_PRIVATE);
+        String url1 = sp.getString("url",null);
+        String urlId =sp.getString("ID", "42");
         OkHttpClient client = new OkHttpClient();
-        String url = "https://64a039731c6b.ngrok.io/api/groups";
+        String url = url1+"/api/groups/";
 
-        Integer ran = ((int)(Math.random()*49+1));
 
         Map<String, String> map =new HashMap();
-        map.put("creator_id", ran.toString());
+        map.put("creator_id", urlId);
         map.put("start_date", date);
         map.put("mountain_name", mountain);
         map.put("description", say);

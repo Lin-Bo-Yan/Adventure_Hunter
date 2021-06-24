@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageViewSearch_Ing_Group_Screen_Page2;
@@ -61,14 +77,15 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
     public void CancelMission(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("確定要取消？");
-        alert.setMessage("點擊後將取消此任務與任務？");
+        alert.setMessage("點擊後將取消此任務？");
         alert.setPositiveButton("確定取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                updateGroupInfo();
                 Intent intent = new Intent();
                 intent.setClass(Search_Ing_Group_Screen_Page2.this, Search_Ing_Group_Screen.class);
                 startActivity(intent);
-                Toast.makeText(Search_Ing_Group_Screen_Page2.this, "已取消此任務與任務", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Search_Ing_Group_Screen_Page2.this, "已取消此任務", Toast.LENGTH_SHORT).show();
             }
         });
         alert.setNegativeButton("我再想想", new DialogInterface.OnClickListener() {
@@ -79,6 +96,39 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
         });
         alert.create().show();
     }
+
+    private void updateGroupInfo() {
+        SharedPreferences sp =getSharedPreferences("MyUser", MODE_PRIVATE);
+        String url1 = sp.getString("url",null);
+        String urlId =sp.getString("ID", "42");
+        OkHttpClient client = new OkHttpClient();
+        String url = url1+"/api/groups/";
+
+        Map<String, String> map =new HashMap();
+        map.put("attendee", "");
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());
+
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()){
+                }
+            }
+        });
+    }
+
 
 
     //跳轉至任務頁面

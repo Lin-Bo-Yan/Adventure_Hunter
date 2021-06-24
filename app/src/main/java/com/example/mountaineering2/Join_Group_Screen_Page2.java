@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,12 +15,29 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class Join_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageView;
     TextView title, descriptionJoin_Group_Screen_Page2;
     String data1, data2;
 //    int myImage;
     String myImage;
+    int groupId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +51,12 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
 
         getData();
         setData();
+
+
+
     }
+
+
     private void  getData() {
         if (getIntent().hasExtra("myImage") && getIntent().hasExtra("data1") && getIntent().hasExtra("data2")){
 
@@ -42,6 +66,7 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
             data2 = getIntent().getStringExtra("data2");
 //            myImage = getIntent().getIntExtra("myImage", 1);
             myImage = getIntent().getStringExtra("myImage");
+            groupId = getIntent().getIntExtra("groupId", 1);
         }else{
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
         }
@@ -65,8 +90,9 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
         alert.setPositiveButton("確定參加", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                updateGroupInfo();
                 Intent intent = new Intent();
-                intent.setClass(Join_Group_Screen_Page2.this, Search_Ing_Group_Screen.class);
+                intent.setClass(Join_Group_Screen_Page2.this, findPeople.class);
                 startActivity(intent);
             }
         });
@@ -79,5 +105,34 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
         alert.show();
 
 
+    }
+
+    private void updateGroupInfo() {
+        SharedPreferences sp =getSharedPreferences("MyUser", MODE_PRIVATE);
+        String url1 = sp.getString("url",null);
+        String urlId =sp.getString("ID", "42");
+        OkHttpClient client = new OkHttpClient();
+        String url = url1+"/api/groups/"+groupId;
+
+        Map<String, String> map = new HashMap<>();
+        map.put("attendee", urlId);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());
+
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            }
+        });
     }
 }

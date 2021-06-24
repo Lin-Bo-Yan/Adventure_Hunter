@@ -52,6 +52,7 @@ public class Join_Group_Screen extends AppCompatActivity {
     public ArrayList<String> moviesList;
     public ArrayList<String> moviesList2;
     public ArrayList<String> images;
+    ArrayList<Integer> groupId;
 
 //    private int images[] ;
 //            = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
@@ -68,6 +69,7 @@ public class Join_Group_Screen extends AppCompatActivity {
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
         images = new ArrayList<>();
+        groupId = new ArrayList<>();
         reciveGroupInfo();
 
 
@@ -145,6 +147,7 @@ public class Join_Group_Screen extends AppCompatActivity {
                 moviesList.add(name);
                 moviesList2.add(description);
                 images.add(image);
+                groupId.add(id);
 
             }
         } catch (JSONException e) {
@@ -227,6 +230,7 @@ public class Join_Group_Screen extends AppCompatActivity {
                     intent.putExtra("data1", moviesList.get(position));
                     intent.putExtra("data2", moviesList2.get(position));
                     intent.putExtra("myImage", images.get(position));
+                    intent.putExtra("groupId", groupId.get(position));
                     context.startActivity(intent);
                 }
             });
