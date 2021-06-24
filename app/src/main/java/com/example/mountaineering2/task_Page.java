@@ -47,6 +47,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -79,10 +80,12 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public static final double END_POI_LAT = 24.181496;//經度
-    public static final double END_POI_LOG = 121.281587;//緯度
+    public double END_POI_LAT;//經度
+    public double END_POI_LNG;//緯度
     //合歡山北峰  24.181496,121.281587
     //七星山 25.1708318,121.5358237
+
+
     transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm分ss秒");
 
     private GoogleMap mMap;
@@ -128,8 +131,9 @@ public class task_Page extends AppCompatActivity implements
     };
 
     private TextView mountain_name;
-    private String url;
+    private String url,mountain;
     private SharedPreferences sp;
+    int groupId;
 
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -183,10 +187,10 @@ public class task_Page extends AppCompatActivity implements
             public void onClick(View view) {
                 startNaviLL.setVisibility(View.GONE);
                 stopNaviLL.setVisibility(View.VISIBLE);
-                doGoogleRouteDrawing(END_POI_LAT, END_POI_LOG);
+                doGoogleRouteDrawing(END_POI_LAT, END_POI_LNG);
                 startTime = System.currentTimeMillis();
                 mTimeHandler.postDelayed(mTimeRunner, 1000);
-                totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LOG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
                         * 1000) / 1000.0);
             }
         });
@@ -222,6 +226,8 @@ public class task_Page extends AppCompatActivity implements
         //取資料
         sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
         url=sp.getString("url","");
+
+        setGET();
     }
 
     private void doGoogleRouteDrawing(double lat, double lng) {
@@ -470,7 +476,7 @@ public class task_Page extends AppCompatActivity implements
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setOnPoiClickListener(this);
 
-        LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LOG);
+        LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LNG);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLocation, MAP_ZOOM_LEVEL));
         mEndMarker = mMap.addMarker(new MarkerOptions()
                 .flat(false)
@@ -497,7 +503,7 @@ public class task_Page extends AppCompatActivity implements
                 mLastLocation.setLongitude(latLng.longitude);
                 showUserPosition();
 
-                if (getDistance(END_POI_LAT, END_POI_LOG, latLng.latitude, latLng.longitude) < 0.1) {
+                if (getDistance(END_POI_LAT, END_POI_LNG, latLng.latitude, latLng.longitude) < 0.1) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(task_Page.this)
                             .setTitle("您已抵達終點")
                             .setPositiveButton("好", new DialogInterface.OnClickListener() {
@@ -533,7 +539,7 @@ public class task_Page extends AppCompatActivity implements
         showUserPosition();
     }
 
-    //------顯示用戶位置
+    //------顯示用戶位置 這一段是將位置呈現出來
     private void showUserPosition() {
         if (!mIsMapInited && mMapFragment != null) {
             mIsMapInited = true;
@@ -543,7 +549,7 @@ public class task_Page extends AppCompatActivity implements
         addUserMarker(current, mLastLocation);
 
         distance_tv.setText("距離目的地：" +
-                (Math.round(getDistance(END_POI_LAT, END_POI_LOG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
                         * 1000) / 1000.0) + "公里");
     }
 
@@ -584,6 +590,7 @@ public class task_Page extends AppCompatActivity implements
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_FINE_LOCATION);
         } else {
+            //mLocationRequest 就是取得的位置
             if (mLocationRequest == null) {
                 mLocationRequest = new LocationRequest();
                 mLocationRequest.setInterval(1000);
@@ -629,9 +636,14 @@ public class task_Page extends AppCompatActivity implements
 
     private void setGET(){
 
+        //從上一頁的資料傳到這裡  不確定放方法裡面能不能作動
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle!=null){
+            groupId =bundle.getInt("GroupId");
+        }
         /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url(url+"/api/groups/")
+                .url(url+"/api/groups/"+"4")
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);
@@ -649,17 +661,27 @@ public class task_Page extends AppCompatActivity implements
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
                     //Log.v("joe", "OK==  " + myResponse);
+                    lat_lng_json(myResponse);
 
-                }else {
-
-                    Log.e("joe",response.body().string());
                 }
 
             }
         });
 
     }
+    //----------解經緯度json
+        private void lat_lng_json(String json){
+            try {
+                JSONObject root =new JSONObject(json);
+                END_POI_LAT=root.getDouble("start_lat");
+                END_POI_LNG=root.getDouble("start_lng");
+                mountain=root.getString("mountain_name");
+                mountain_name.setText(mountain);
+            } catch (Exception e) {
+                //Log.e("joe",e.toString());
+            }
 
+        }
 
 
 }

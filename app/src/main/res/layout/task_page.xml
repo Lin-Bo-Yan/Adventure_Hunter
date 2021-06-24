@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="185dp"
-        android:src="@drawable/button_target_location_w" />
+        android:src="@drawable/button_location_w" />
 
     <LinearLayout
         android:id="@+id/poi_info_view_ll_content"
@@ -54,7 +54,6 @@
                 android:layout_marginTop="12dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="七星山"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
