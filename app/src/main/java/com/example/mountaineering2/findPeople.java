@@ -3,9 +3,12 @@ package com.example.mountaineering2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class findPeople extends AppCompatActivity {
     private Button goToNotYetPage;
@@ -13,16 +16,16 @@ public class findPeople extends AppCompatActivity {
     private Button joinGroupIng;
     private Button groupHistory;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_people);
 
-        // Write a message to the database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
+        //存放api網址
+        SharedPreferences sp = getSharedPreferences("MyUser", MODE_PRIVATE);
+        String urlId =sp.getString("ID", null);
 
 
         //創建任務跳轉
@@ -30,9 +33,16 @@ public class findPeople extends AppCompatActivity {
         goToCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(findPeople.this, Create_Group_Screen.class);
-                startActivity(intent);
+                if (urlId != null){
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, sign_in.class);
+                    startActivity(intent);
+                    Toast.makeText(findPeople.this,"請先登入會員",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -41,9 +51,16 @@ public class findPeople extends AppCompatActivity {
         goToNotYetPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(findPeople.this, Join_Group_Screen.class);
-                startActivity(intent);
+                if (urlId != null){
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, sign_in.class);
+                    startActivity(intent);
+                    Toast.makeText(findPeople.this,"請先登入會員",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -55,9 +72,16 @@ public class findPeople extends AppCompatActivity {
         groupHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(findPeople.this, Group_History_Screen.class);
-                startActivity(intent);
+                if (urlId != null){
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, sign_in.class);
+                    startActivity(intent);
+                    Toast.makeText(findPeople.this,"請先登入會員",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -66,9 +90,16 @@ public class findPeople extends AppCompatActivity {
         joinGroupIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(findPeople.this, Search_Ing_Group_Screen.class);
-                startActivity(intent);
+                if (urlId != null){
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, Create_Group_Screen.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent();
+                    intent.setClass(findPeople.this, sign_in.class);
+                    startActivity(intent);
+                    Toast.makeText(findPeople.this,"請先登入會員",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

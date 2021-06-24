@@ -89,8 +89,11 @@ public class Join_Group_Screen extends AppCompatActivity {
     }
 
     public void reciveGroupInfo() {
+        SharedPreferences sp =getSharedPreferences("MyUser", MODE_PRIVATE);
+        String url1 = sp.getString("url",null);
+        String urlId =sp.getString("ID", null);
         OkHttpClient client = new OkHttpClient();
-        String url = "https://450d0ac08887.ngrok.io/api/groups";
+        String url = url1+"/api/groups/ing/"+urlId;
 
         Request request = new Request.Builder()
                 .url(url)
