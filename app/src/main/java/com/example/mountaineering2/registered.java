@@ -83,7 +83,7 @@ public class registered extends AppCompatActivity {
 
         // 建立Request，設置連線資訊
         Request request = new Request.Builder()
-                .url("https://e3b4783901b7.ngrok.io"+"/api/users/")
+                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/")
                 .post(body)
                 .build();
 
