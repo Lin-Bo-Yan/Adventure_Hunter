@@ -31,7 +31,7 @@ import okhttp3.Response;
 
 public class set_up extends AppCompatActivity {
     SharedPreferences sp;
-    String ID;
+    String ID,url;
     TextInputLayout passWord,set_email,phon,birthday;
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -50,7 +50,12 @@ public class set_up extends AppCompatActivity {
         if(bundle!=null){
             ID=bundle.getString("id");
         }
+        //存資料
         sp=getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+
+        //取資料
+        sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+        url=sp.getString("url","");
     }
 
 
@@ -75,7 +80,7 @@ public class set_up extends AppCompatActivity {
 
         // 建立Request，設置連線資訊
         Request request = new Request.Builder()
-                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/"+ID)
+                .url(url+"/api/users/"+ID)
                 .put(body)
                 .build();
 

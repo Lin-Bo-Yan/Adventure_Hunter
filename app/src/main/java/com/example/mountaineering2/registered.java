@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,11 +38,14 @@ public class registered extends AppCompatActivity {
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
     Button go;
+    SharedPreferences sp;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registered);
+
         reg_account=(TextInputLayout)findViewById(R.id.reg_Account);
         reg_password=(TextInputLayout)findViewById(R.id.reg_passWord);
         reg_phon=(TextInputLayout)findViewById(R.id.reg_phon);
@@ -58,6 +62,9 @@ public class registered extends AppCompatActivity {
             }
         });
 
+        //取資料
+        sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+        url=sp.getString("url","");
     }
 
     private void sendPOST() {
@@ -83,7 +90,7 @@ public class registered extends AppCompatActivity {
 
         // 建立Request，設置連線資訊
         Request request = new Request.Builder()
-                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/")
+                .url(url+"/api/users/")
                 .post(body)
                 .build();
 

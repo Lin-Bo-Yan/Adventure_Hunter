@@ -39,6 +39,7 @@ public class sign_in extends AppCompatActivity {
     private TextInputLayout Account,passWord;
     private Button loginIn;
     SharedPreferences sp;
+    String url;
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
 
@@ -67,9 +68,11 @@ public class sign_in extends AppCompatActivity {
             @Override
             public void onClick(View v) {openforgetPage();}
         });
-
+        //存資料
         sp=getSharedPreferences("MyUser", Context.MODE_PRIVATE);
-
+        //取資料
+        sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+        url=sp.getString("url","");
     }
     //----------註冊-------------------------
     public void openRegistered(){
@@ -96,7 +99,7 @@ public class sign_in extends AppCompatActivity {
         String acc=Account.getEditText().getText().toString().trim();
 /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/account/"+acc)
+                .url(url+"/api/users/account/"+acc)
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);
