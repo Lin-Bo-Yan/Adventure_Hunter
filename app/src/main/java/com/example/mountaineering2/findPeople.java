@@ -25,15 +25,15 @@ public class findPeople extends AppCompatActivity {
 
         //存放api網址
         SharedPreferences sp = getSharedPreferences("MyUser", MODE_PRIVATE);
-        String urlId =sp.getString("ID", null);
-
+        String Id =sp.getString("ID", "42");
+        Log.v("joe","showID= "+Id);
 
         //創建任務跳轉
         goToCreateGroup = findViewById(R.id.goToCreateGroup);
         goToCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (urlId != null){
+                if (Id != null){
                     Intent intent = new Intent();
                     intent.setClass(findPeople.this, Create_Group_Screen.class);
                     startActivity(intent);
@@ -51,7 +51,7 @@ public class findPeople extends AppCompatActivity {
         goToNotYetPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (urlId != null){
+                if (Id != null){
                     Intent intent = new Intent();
                     intent.setClass(findPeople.this, Create_Group_Screen.class);
                     startActivity(intent);
@@ -72,7 +72,7 @@ public class findPeople extends AppCompatActivity {
         groupHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (urlId != null){
+                if (Id != null){
                     Intent intent = new Intent();
                     intent.setClass(findPeople.this, Create_Group_Screen.class);
                     startActivity(intent);
@@ -90,7 +90,7 @@ public class findPeople extends AppCompatActivity {
         joinGroupIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (urlId != null){
+                if (Id != null){
                     Intent intent = new Intent();
                     intent.setClass(findPeople.this, Create_Group_Screen.class);
                     startActivity(intent);
