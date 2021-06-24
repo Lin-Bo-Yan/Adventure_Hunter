@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -78,8 +79,10 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public static final double END_POI_LAT = 25.1708318;//經緯度
-    public static final double END_POI_LNG = 121.5358237;//經緯度
+    public static final double END_POI_LAT = 24.181496;//經度
+    public static final double END_POI_LOG = 121.281587;//緯度
+    //合歡山北峰  24.181496,121.281587
+    //七星山 25.1708318,121.5358237
     transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm分ss秒");
 
     private GoogleMap mMap;
@@ -123,6 +126,10 @@ public class task_Page extends AppCompatActivity implements
             mTimeHandler.postDelayed(mTimeRunner, 1000);
         }
     };
+
+    private TextView mountain_name;
+    private String url;
+    private SharedPreferences sp;
 
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -176,10 +183,10 @@ public class task_Page extends AppCompatActivity implements
             public void onClick(View view) {
                 startNaviLL.setVisibility(View.GONE);
                 stopNaviLL.setVisibility(View.VISIBLE);
-                doGoogleRouteDrawing(END_POI_LAT, END_POI_LNG);
+                doGoogleRouteDrawing(END_POI_LAT, END_POI_LOG);
                 startTime = System.currentTimeMillis();
                 mTimeHandler.postDelayed(mTimeRunner, 1000);
-                totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LOG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
                         * 1000) / 1000.0);
             }
         });
@@ -210,6 +217,11 @@ public class task_Page extends AppCompatActivity implements
         finishPageTarget = findViewById(R.id.activity_main_finish_page_target);
         finishPageTime = findViewById(R.id.activity_main_finish_page_time);
         finishPageDistance = findViewById(R.id.activity_main_finish_page_distance);
+
+        mountain_name=(TextView)findViewById(R.id.mountain_name);
+        //取資料
+        sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+        url=sp.getString("url","");
     }
 
     private void doGoogleRouteDrawing(double lat, double lng) {
@@ -458,7 +470,7 @@ public class task_Page extends AppCompatActivity implements
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setOnPoiClickListener(this);
 
-        LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LNG);
+        LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LOG);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLocation, MAP_ZOOM_LEVEL));
         mEndMarker = mMap.addMarker(new MarkerOptions()
                 .flat(false)
@@ -485,7 +497,7 @@ public class task_Page extends AppCompatActivity implements
                 mLastLocation.setLongitude(latLng.longitude);
                 showUserPosition();
 
-                if (getDistance(END_POI_LAT, END_POI_LNG, latLng.latitude, latLng.longitude) < 0.1) {
+                if (getDistance(END_POI_LAT, END_POI_LOG, latLng.latitude, latLng.longitude) < 0.1) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(task_Page.this)
                             .setTitle("您已抵達終點")
                             .setPositiveButton("好", new DialogInterface.OnClickListener() {
@@ -531,7 +543,7 @@ public class task_Page extends AppCompatActivity implements
         addUserMarker(current, mLastLocation);
 
         distance_tv.setText("距離目的地：" +
-                (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                (Math.round(getDistance(END_POI_LAT, END_POI_LOG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
                         * 1000) / 1000.0) + "公里");
     }
 
@@ -619,7 +631,7 @@ public class task_Page extends AppCompatActivity implements
 
         /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url("https://7ad61a289fe3.ngrok.io"+"/api/groups/")
+                .url(url+"/api/groups/")
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);

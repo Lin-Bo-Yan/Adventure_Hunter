@@ -74,4 +74,8 @@ public class homeScreen extends AppCompatActivity {
 
     }
 
+    public void task(View view) {
+        Intent intent = new Intent(this, task_Page.class);
+        startActivity(intent);
+    }
 }
