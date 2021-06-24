@@ -94,6 +94,7 @@ public class Create_Check_Screen extends AppCompatActivity {
         map.put("description", say);
         map.put("name", name_mountain);
         map.put("points", pointString);
+        map.put("image", "https://i.ibb.co/WP78xk9/j-QUBYCx-Qwt-small.jpg");
 
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());

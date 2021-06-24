@@ -69,19 +69,6 @@ public class Join_Group_Screen extends AppCompatActivity {
         moviesList2 = new ArrayList<>();
         images = new ArrayList<>();
         reciveGroupInfo();
-//        moviesList.add("合歡群峰");
-//        moviesList.add("北大武山");
-//        moviesList.add("玉山");
-//        moviesList.add("谷關七雄");
-//        moviesList.add("合歡群峰");
-//        moviesList.add("北大武山");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 200 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 400 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 300 點");
-//        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。" + "\n可獲得之點數= 100 點");Log.v("joe", "name= "+moviesList);
-
 
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -91,7 +78,7 @@ public class Join_Group_Screen extends AppCompatActivity {
     public void reciveGroupInfo() {
         SharedPreferences sp =getSharedPreferences("MyUser", MODE_PRIVATE);
         String url1 = sp.getString("url",null);
-        String urlId =sp.getString("ID", null);
+        String urlId =sp.getString("ID", "42");
         OkHttpClient client = new OkHttpClient();
         String url = url1+"/api/groups/ing/"+urlId;
 
@@ -229,7 +216,6 @@ public class Join_Group_Screen extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.rowCountTextView.setText(moviesList2.get(position));
             holder.textView.setText(moviesList.get(position));
-//            holder.imageView.setImageResource(images[position]);
 
             Picasso.get().load(images.get(position)).into(holder.imageView) ;
 
@@ -240,7 +226,6 @@ public class Join_Group_Screen extends AppCompatActivity {
                     Intent intent = new Intent(context, Join_Group_Screen_Page2.class);
                     intent.putExtra("data1", moviesList.get(position));
                     intent.putExtra("data2", moviesList2.get(position));
-//                    intent.putExtra("myImage", images[position]);
                     intent.putExtra("myImage", images.get(position));
                     context.startActivity(intent);
                 }

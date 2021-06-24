@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,19 +24,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Group_History_Screen extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private ArrayList<String> moviesList;
     private ArrayList<String> moviesList2;
+    private ArrayList<String> images;
+    String myResponse;
 
 
-    String s1[], s2[];
-    int images[] = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
-            R.drawable.baydawushan, R.drawable.namguashan};
+//    int images[] = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
+//            R.drawable.baydawushan, R.drawable.namguashan};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,35 +59,143 @@ public class Group_History_Screen extends AppCompatActivity {
         setContentView(R.layout.group_history_screen);
 
         //抓取String.xml裡的資料
-        s1 = getResources().getStringArray(R.array.groupHistoryGroup_History_Screen);
-        s2 = getResources().getStringArray(R.array.descriptionGroup_History_Screen);
+
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
-        moviesList.add("合歡群峰");
-        moviesList.add("北大武山");
-        moviesList.add("玉山");
-        moviesList.add("谷關七雄");
-        moviesList.add("合歡群峰");
-        moviesList.add("北大武山");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
-        moviesList2.add("標高 3742 公尺，中央山脈第三高峰，山姿雄偉，為台灣「五嶽」之一。"+"\n可獲得之點數= 100 點");
+        images = new ArrayList<>();
+
+        reciveGroupHis();
 
 
         recyclerView = findViewById(R.id.groupHistoryGroup_History_Screen);
 
 
-        myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(myAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
     }
+
+    private void reciveGroupHis() {
+        SharedPreferences sp = getSharedPreferences("MyUser", MODE_PRIVATE);
+        String url1 = sp.getString("url",null);
+        String urlId =sp.getString("ID", "42");
+        OkHttpClient client = new OkHttpClient();
+        String url = url1+"/api/groups/his/"+urlId;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    myResponse = response.body().string();
+
+                    Log.v("joe", "Json" + myResponse);
+
+                    Group_History_Screen.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            parseJson(myResponse);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    private void parseJson(String myResponse) {
+        try {
+            JSONArray jsonArray = new JSONArray(myResponse);
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Integer id = jsonObject.getInt("id");
+                String creator_id = jsonObject.getString("creator_id");
+                String name = jsonObject.getString("name");
+                String slug = jsonObject.getString("slug");
+                String description = jsonObject.getString("description");
+                String status = jsonObject.getString("status");
+                String parent_id = jsonObject.getString("parent_id");
+                String enable_forum = jsonObject.getString("enable_forum");
+                String date_created = jsonObject.getString("date_created");
+                String start_date = jsonObject.getString("start_date");
+                String mountain_name = jsonObject.getString("mountain_name");
+                String total_num = jsonObject.getString("total_num");
+                String image = jsonObject.getString("image");
+                String attendee = jsonObject.getString("attendee");
+                String points = jsonObject.getString("points");
+                String start_time = jsonObject.getString("start_time");
+                String finish_time = jsonObject.getString("finish_time");
+                String total_time = jsonObject.getString("total_time");
+                String start_lat = jsonObject.getString("start_lat");
+                String start_lng = jsonObject.getString("start_lng");
+                String finish_lat = jsonObject.getString("finish_lat");
+                String finish_lng = jsonObject.getString("finish_lng");
+
+                moviesList.add(name);
+                moviesList2.add(description);
+                images.add(image);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.v("joe","images== "+images);
+
+        try {
+            JSONArray jsonArray = new JSONArray(myResponse);
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Integer id = jsonObject.getInt("id");
+                String creator_id = jsonObject.getString("creator_id");
+                String name = jsonObject.getString("name");
+                String slug = jsonObject.getString("slug");
+                String description = jsonObject.getString("description");
+                String status = jsonObject.getString("status");
+                String parent_id = jsonObject.getString("parent_id");
+                String enable_forum = jsonObject.getString("enable_forum");
+                String date_created = jsonObject.getString("date_created");
+                String start_date = jsonObject.getString("start_date");
+                String mountain_name = jsonObject.getString("mountain_name");
+                String total_num = jsonObject.getString("total_num");
+                String image = jsonObject.getString("image");
+                String attendee = jsonObject.getString("attendee");
+                String points = jsonObject.getString("points");
+                String start_time = jsonObject.getString("start_time");
+                String finish_time = jsonObject.getString("finish_time");
+                String total_time = jsonObject.getString("total_time");
+                String start_lat = jsonObject.getString("start_lat");
+                String start_lng = jsonObject.getString("start_lng");
+                String finish_lat = jsonObject.getString("finish_lat");
+                String finish_lng = jsonObject.getString("finish_lng");
+
+                moviesList.add(name);
+                moviesList2.add(description);
+                images.add(image);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.v("joe","images== "+images);
+        myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(myAdapter);
+
+
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -99,9 +224,10 @@ public class Group_History_Screen extends AppCompatActivity {
         ArrayList<String> moviesList;
         ArrayList<String> moviesList2;
         ArrayList<String> moviesListAll;
-        int images[];
+        ArrayList<String> images;
 
-        public MyAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, int images[]) {
+
+        public MyAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images) {
             this.context = context;
             this.moviesList = moviesList;
             this.moviesList2=moviesList2;
@@ -183,7 +309,8 @@ public class Group_History_Screen extends AppCompatActivity {
             //產生資料
             holder.myText1.setText(moviesList.get(position));
             holder.myText2.setText(moviesList2.get(position));
-            holder.myImage.setImageResource(images[position]);
+
+            Picasso.get().load(images.get(position)).into(holder.myImage);
 
             //觸發mainLayout listener
             holder.mainLayout.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +319,7 @@ public class Group_History_Screen extends AppCompatActivity {
                     Intent intent = new Intent(context, Group_History_Screen_Page2.class);
                     intent.putExtra("data1Page6", moviesList.get(position));
                     intent.putExtra("data2Page6", moviesList2.get(position));
-                    intent.putExtra("myImagePage6", images[position]);
+                    intent.putExtra("myImagePage6", images.get(position));
                     context.startActivity(intent);
                 }
             });

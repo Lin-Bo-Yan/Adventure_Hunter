@@ -11,13 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class Group_History_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageViewGroup_History_Screen_Page2;
     TextView titleGroup_History_Screen_Page2, descriptionGroup_History_Screen_Page2;
 
 
-    String data5, data6;
-    int imagesPage6;
+    String data5, data6, imagesPage6;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
             //產生資料
             data5 = getIntent().getStringExtra("data1Page6");
             data6 = getIntent().getStringExtra("data1Page6");
-            imagesPage6 = getIntent().getIntExtra("myImagePage6", 1);
+            imagesPage6 = getIntent().getStringExtra("myImagePage6");
 
         }else{
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
@@ -52,7 +54,8 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
         //輸出版面
         titleGroup_History_Screen_Page2.setText(data5);
         descriptionGroup_History_Screen_Page2.setText(data6);
-        mainImageViewGroup_History_Screen_Page2.setImageResource(imagesPage6);
+
+        Picasso.get().load(imagesPage6).into(mainImageViewGroup_History_Screen_Page2);
     }
 
     public void GoBackLastPage(View view) {
