@@ -26,7 +26,7 @@ public class member extends AppCompatActivity {
          birth=sp.getString("birth","");
          ID=sp.getString("ID","");
          phone=sp.getString("phone","");
-        ff();
+         ff();
 
     }
 

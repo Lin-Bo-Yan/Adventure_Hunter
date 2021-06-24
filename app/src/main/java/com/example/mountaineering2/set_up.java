@@ -51,7 +51,6 @@ public class set_up extends AppCompatActivity {
             ID=bundle.getString("id");
         }
         sp=getSharedPreferences("MyUser", Context.MODE_PRIVATE);
-
     }
 
 
@@ -76,7 +75,7 @@ public class set_up extends AppCompatActivity {
 
         // 建立Request，設置連線資訊
         Request request = new Request.Builder()
-                .url("https://e3b4783901b7.ngrok.io"+"/api/users/"+ID)
+                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/"+ID)
                 .put(body)
                 .build();
 

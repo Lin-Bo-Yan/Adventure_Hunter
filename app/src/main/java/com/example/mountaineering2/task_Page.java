@@ -16,6 +16,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +54,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +74,7 @@ public class task_Page extends AppCompatActivity implements
     public static final int POLYLINE_Z_INDEX = 100;
     public static final double END_POI_LAT = 25.1708318;
     public static final double END_POI_LNG = 121.5358237;
+    transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm分ss秒");
 
     private GoogleMap mMap;
     private Location mLastLocation;
@@ -83,13 +86,35 @@ public class task_Page extends AppCompatActivity implements
     private Marker mEndMarker;
     private Circle mUserAccuracyCircle;
     private ImageView mCurrentPositionIV;
+    private ImageView mTargetPositionIV;
     private BottomSheetBehavior mBottomSheetBehavior;
     private LinearLayout poiInfoLL;
     private LinearLayout startNaviLL;
     private TextView startNavi;
+    private LinearLayout stopNaviLL;
     private TextView stopNavi;
+    private TextView time_tv;
+    private TextView distance_tv;
     private Polyline mPolyline = null;
     private ArrayList points;
+    private LinearLayout finishPageLL;
+    private TextView finishPageTarget;
+    private TextView finishPageTime;
+    private TextView finishPageDistance;
+    private Double totalDistance;
+
+    private long startTime;
+    private long endTime;
+    private long runTime;
+    private Handler mTimeHandler = new Handler();
+    private final Runnable mTimeRunner = new Runnable() {
+        @Override
+        public void run() {
+            runTime = System.currentTimeMillis() - startTime;
+            time_tv.setText("經過時間：00時" + dateFormat.format(runTime));
+            mTimeHandler.postDelayed(mTimeRunner, 1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +130,7 @@ public class task_Page extends AppCompatActivity implements
         startNaviLL = findViewById(R.id.activity_main_start_navi_ll);
         startNavi = findViewById(R.id.activity_main_start_navi);
         stopNavi = findViewById(R.id.activity_main_stop_navi);
+        stopNaviLL = findViewById(R.id.activity_main_stop_navi_ll);
         mCurrentPositionIV = findViewById(R.id.map_content_view_iv_current_position);
         mCurrentPositionIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,13 +143,32 @@ public class task_Page extends AppCompatActivity implements
                 }
             }
         });
+        mTargetPositionIV = findViewById(R.id.map_content_view_iv_target_position);
+        mTargetPositionIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mMap != null && mEndMarker != null) {
+                    LatLng current = new LatLng(mEndMarker.getPosition().latitude,
+                            mEndMarker.getPosition().longitude);
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current, MAP_ZOOM_LEVEL));
+
+                }
+            }
+        });
+
+        time_tv = findViewById(R.id.activity_main_time_tv);
+        distance_tv = findViewById(R.id.activity_main_distance_tv);
 
         startNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startNaviLL.setVisibility(View.GONE);
-                stopNavi.setVisibility(View.VISIBLE);
+                stopNaviLL.setVisibility(View.VISIBLE);
                 doGoogleRouteDrawing(END_POI_LAT, END_POI_LNG);
+                startTime = System.currentTimeMillis();
+                mTimeHandler.postDelayed(mTimeRunner, 1000);
+                totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                        * 1000) / 1000.0);
             }
         });
 
@@ -132,10 +177,26 @@ public class task_Page extends AppCompatActivity implements
             public void onClick(View view) {
                 poiInfoLL.setVisibility(View.GONE);
                 startNaviLL.setVisibility(View.VISIBLE);
-                stopNavi.setVisibility(View.GONE);
+                stopNaviLL.setVisibility(View.GONE);
                 clearGoogleRoute();
+                endTime = System.currentTimeMillis();
+                runTime = endTime - startTime;
+                mTimeHandler.removeCallbacks(mTimeRunner);
+                time_tv.setText("經過時間：");
             }
         });
+
+        finishPageLL = findViewById(R.id.activity_main_finish_page_ll);
+        findViewById(R.id.activity_main_finish_page_back_tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishPageLL.setVisibility(View.GONE);
+            }
+        });
+
+        finishPageTarget = findViewById(R.id.activity_main_finish_page_target);
+        finishPageTime = findViewById(R.id.activity_main_finish_page_time);
+        finishPageDistance = findViewById(R.id.activity_main_finish_page_distance);
     }
 
     private void doGoogleRouteDrawing(double lat, double lng) {
@@ -287,6 +348,7 @@ public class task_Page extends AppCompatActivity implements
                 mPolyline.setZIndex(POLYLINE_Z_INDEX);
             }
         }
+
     }
 
     private void clearGoogleRoute() {
@@ -404,8 +466,7 @@ public class task_Page extends AppCompatActivity implements
                 mLastLocation.setLongitude(latLng.longitude);
                 showUserPosition();
 
-                if (getDistance(END_POI_LAT, END_POI_LNG, latLng.latitude, latLng.longitude) > 1 &&
-                        getDistance(END_POI_LAT, END_POI_LNG, latLng.latitude, latLng.longitude) < 100) {
+                if (getDistance(END_POI_LAT, END_POI_LNG, latLng.latitude, latLng.longitude) < 0.1) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(task_Page.this)
                             .setTitle("您已抵達終點")
                             .setPositiveButton("好", new DialogInterface.OnClickListener() {
@@ -413,6 +474,10 @@ public class task_Page extends AppCompatActivity implements
                                 public void onClick(DialogInterface dialog, int which) {
                                     stopNavi.performClick();
                                     dialog.dismiss();
+                                    finishPageTarget.setText("七星山");
+                                    finishPageTime.setText(("00時" + dateFormat.format(runTime)));
+                                    finishPageDistance.setText(String.valueOf(totalDistance) + "公里");
+                                    finishPageLL.setVisibility(View.VISIBLE);
                                 }
                             });
                     builder.create().show();
@@ -443,6 +508,10 @@ public class task_Page extends AppCompatActivity implements
         }
         LatLng current = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         addUserMarker(current, mLastLocation);
+
+        distance_tv.setText("距離目的地：" +
+                (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
+                        * 1000) / 1000.0) + "公里");
     }
 
     private void addUserMarker(LatLng position, Location location) {
@@ -512,9 +581,11 @@ public class task_Page extends AppCompatActivity implements
 
         float distance = l1.distanceTo(l2);
 
-        if (distance > 1000.0f) {
-            distance = distance / 1000000.0f;
-        }
+//        if (distance > 1000.0f) {
+//            distance = distance / 1000000.0f;
+//        }
+
+        distance = distance / 1000.0f;
 
         return distance;
     }

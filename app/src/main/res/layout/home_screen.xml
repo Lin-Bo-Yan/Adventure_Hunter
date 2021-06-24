@@ -7,18 +7,21 @@
     android:background="@drawable/hiking_bg_"
     tools:context=".homeScreen">
 
-    <!--    <androidx.appcompat.widget.Toolbar-->
-    <!--        android:id="@+id/toolbar2"-->
-    <!--        android:layout_width="409dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginLeft="20dp"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        android:minHeight="?attr/actionBarSize"-->
-    <!--        android:theme="?attr/actionBarTheme"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:navigationIcon="@drawable/icon_menu" />-->
+    <!--
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="#FFFFFF"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/icon_menu" />
+-->
 
     <LinearLayout
         android:id="@+id/linearLayout3"

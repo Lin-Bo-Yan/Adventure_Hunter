@@ -96,7 +96,7 @@ public class sign_in extends AppCompatActivity {
         String acc=Account.getEditText().getText().toString().trim();
 /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url("https://e3b4783901b7.ngrok.io"+"/api/users/account/"+acc)
+                .url("https://7ad61a289fe3.ngrok.io"+"/api/users/account/"+acc)
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);
