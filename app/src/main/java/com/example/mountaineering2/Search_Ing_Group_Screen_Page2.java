@@ -32,8 +32,8 @@ import okhttp3.Response;
 
 public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageViewSearch_Ing_Group_Screen_Page2;
-    TextView titleSearch_Ing_Group_Screen_Page2, descriptionSearch_Ing_Group_Screen_Page2;
-    String data3, data4, imagesPage4;
+    TextView titleSearch_Ing_Group_Screen_Page2, descriptionSearch_Ing_Group_Screen_Page2, ing_group_name, ing_people, ing_des, ing_date;
+    String data3, data4, imagesPage4, groupName, people, des, date;
     int groupId;
 
 
@@ -46,21 +46,27 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
         mainImageViewSearch_Ing_Group_Screen_Page2 = findViewById(R.id.mainImageViewSearch_Ing_Group_Screen_Page2);
         titleSearch_Ing_Group_Screen_Page2 = findViewById(R.id.titleSearch_Ing_Group_Screen_Page2);
         descriptionSearch_Ing_Group_Screen_Page2 = findViewById(R.id.descriptionSearch_Ing_Group_Screen_Page2);
-
+        ing_group_name = findViewById(R.id.textView18);
+        ing_people = findViewById(R.id.textView19);
+        ing_des = findViewById(R.id.textView20);
+        ing_date = findViewById(R.id.title_ing_date);
         getData();
         setData();
     }
     private void getData() {
-        if (getIntent().hasExtra("myImagePage4") && getIntent().hasExtra("data1Page4") && getIntent().hasExtra("data2Page4")) {
+        if (getIntent().hasExtra("myImagePage4") && getIntent().hasExtra("mountain_name") && getIntent().hasExtra("points")) {
 
 
             //產生資料
-            data3 = getIntent().getStringExtra("data1Page4");
-            data4 = getIntent().getStringExtra("data2Page4");
+            data3 = getIntent().getStringExtra("mountain_name");
+            data4 = getIntent().getStringExtra("points");
             imagesPage4 = getIntent().getStringExtra("myImagePage4");
-            groupId = getIntent().getIntExtra("groupId",1);
-            Log.v("joe", "Id= "+groupId);
+            groupName = getIntent().getStringExtra("groupName");
+            people = getIntent().getStringExtra("total_people");
+            des = getIntent().getStringExtra("des");
+            date = getIntent().getStringExtra("start_date");
 
+            groupId = getIntent().getIntExtra("groupId",1);
         } else {
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
         }
@@ -71,7 +77,11 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
 
         //輸出版面
         titleSearch_Ing_Group_Screen_Page2.setText(data3);
-        descriptionSearch_Ing_Group_Screen_Page2.setText(data4);
+        descriptionSearch_Ing_Group_Screen_Page2.setText(data4+" 點");
+        ing_date.setText(date);
+        ing_group_name.setText(groupName);
+        ing_people.setText(people+" 人");
+        ing_des.setText(des);
         Picasso.get().load(imagesPage4).into(mainImageViewSearch_Ing_Group_Screen_Page2);
     }
     public void CancelMission(View view) {

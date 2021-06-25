@@ -92,7 +92,7 @@
             android:parentActivityName=".homeScreen" />
         <activity
             android:name=".homeScreen"
-            android:label="主畫面" />
+            android:label="Adventure Hunter"/>
         <activity
             android:name=".registered"
             android:label="註冊"
