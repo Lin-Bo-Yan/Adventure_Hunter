@@ -7,16 +7,32 @@
     tools:context=".Group_History_Screen_Page2">
 
     <TextView
+        android:id="@+id/textView41"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="日期"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/titleGroup_History_Screen_Page2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        android:textSize="40sp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="山名"
+        android:textAllCaps="false"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -31,17 +47,104 @@
         app:srcCompat="@drawable/yushan" />
 
     <TextView
-        android:id="@+id/descriptionGroup_History_Screen_Page2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView42"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        android:text="團名:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainImageViewGroup_History_Screen_Page2" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:text="任務人數:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:text="將獲得點數:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="15dp"
+        android:text="團主想說的話:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="287dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:text="團主的話"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView45" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="團名"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView42"
+        app:layout_constraintTop_toBottomOf="@+id/mainImageViewGroup_History_Screen_Page2" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="人數"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView43"
+        app:layout_constraintTop_toBottomOf="@+id/textView47"  />
+
+    <TextView
+        android:id="@+id/descriptionGroup_History_Screen_Page2"
+        android:layout_width="129dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="點數"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@+id/textView44"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
     <Button
         android:id="@+id/button2"
@@ -49,7 +152,7 @@
         android:layout_height="76dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="40dp"
         android:onClick="GoBackLastPage"
         android:text="返回上頁"
         android:textSize="18sp"
@@ -62,7 +165,7 @@
         android:layout_height="76dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="40dp"
         android:onClick="GoToJoinOthers"
         android:text="去參加\n其他任務"
         android:textSize="18sp"

@@ -15,10 +15,10 @@ import com.squareup.picasso.Picasso;
 
 public class Group_History_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageViewGroup_History_Screen_Page2;
-    TextView titleGroup_History_Screen_Page2, descriptionGroup_History_Screen_Page2;
+    TextView titleGroup_History_Screen_Page2, descriptionGroup_History_Screen_Page2, dateText, groupText, peopleText, des;
 
 
-    String data5, data6, imagesPage6;
+    String data5, data6, imagesPage6, groupName, startDate, peopleNum, desText;
 
 
     @Override
@@ -30,17 +30,26 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
         mainImageViewGroup_History_Screen_Page2 = findViewById(R.id.mainImageViewGroup_History_Screen_Page2);
         titleGroup_History_Screen_Page2 = findViewById(R.id.titleGroup_History_Screen_Page2);
         descriptionGroup_History_Screen_Page2 = findViewById(R.id.descriptionGroup_History_Screen_Page2);
+        dateText = findViewById(R.id.textView41);
+        groupText = findViewById(R.id.textView47);
+        peopleText = findViewById(R.id.textView48);
+        des = findViewById(R.id.textView46);
 
         getData();
         setData();
     }
     private void  getData() {
-        if (getIntent().hasExtra("myImagePage6") && getIntent().hasExtra("data1Page6") && getIntent().hasExtra("data1Page6")){
+        if (getIntent().hasExtra("mountain_name") && getIntent().hasExtra("point") && getIntent().hasExtra("groupName")){
 
 
             //產生資料
-            data5 = getIntent().getStringExtra("data1Page6");
-            data6 = getIntent().getStringExtra("data1Page6");
+            data5 = getIntent().getStringExtra("mountain_name");
+            data6 = getIntent().getStringExtra("point");
+            groupName = getIntent().getStringExtra("groupName");
+            startDate = getIntent().getStringExtra("startDate");
+            peopleNum = getIntent().getStringExtra("peopleNum");
+            desText = getIntent().getStringExtra("des");
+
             imagesPage6 = getIntent().getStringExtra("myImagePage6");
 
         }else{
@@ -54,6 +63,10 @@ public class Group_History_Screen_Page2 extends AppCompatActivity {
         //輸出版面
         titleGroup_History_Screen_Page2.setText(data5);
         descriptionGroup_History_Screen_Page2.setText(data6);
+        dateText.setText(startDate);
+        groupText.setText(groupName);
+        peopleText.setText(peopleNum);
+        des.setText(desText);
 
         Picasso.get().load(imagesPage6).into(mainImageViewGroup_History_Screen_Page2);
     }

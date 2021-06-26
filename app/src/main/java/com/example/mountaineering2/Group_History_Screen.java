@@ -44,9 +44,8 @@ import okhttp3.Response;
 public class Group_History_Screen extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
-    private ArrayList<String> moviesList;
-    private ArrayList<String> moviesList2;
-    private ArrayList<String> images;
+    private ArrayList<String> moviesList, moviesList2, images, date, nameList, peopleList, desList;
+
     String myResponse;
 
 
@@ -62,6 +61,10 @@ public class Group_History_Screen extends AppCompatActivity {
 
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
+        date = new ArrayList<>();
+        nameList = new ArrayList<>();
+        peopleList = new ArrayList<>();
+        desList = new ArrayList<>();
         images = new ArrayList<>();
 
         reciveGroupHis();
@@ -141,8 +144,12 @@ public class Group_History_Screen extends AppCompatActivity {
                 String finish_lat = jsonObject.getString("finish_lat");
                 String finish_lng = jsonObject.getString("finish_lng");
 
-                moviesList.add(name);
-                moviesList2.add(description);
+                moviesList.add(mountain_name);
+                moviesList2.add(points);
+                date.add(start_date);
+                nameList.add(name);
+                peopleList.add(total_num);
+                desList.add(description);
                 images.add(image);
 
             }
@@ -151,7 +158,7 @@ public class Group_History_Screen extends AppCompatActivity {
         }
         Log.v("joe","images== "+images);
 
-        myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images);
+        myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images, nameList, date);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
 
@@ -182,16 +189,15 @@ public class Group_History_Screen extends AppCompatActivity {
     public class MyAdapter extends RecyclerView.Adapter<Group_History_Screen.MyAdapter.MyViewHolder> implements Filterable {
 
         Context context;
-        ArrayList<String> moviesList;
-        ArrayList<String> moviesList2;
-        ArrayList<String> moviesListAll;
-        ArrayList<String> images;
+        ArrayList<String> moviesList, moviesList2, moviesListAll, images, name, date;
 
 
-        public MyAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images) {
+        public MyAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images, ArrayList<String> name, ArrayList<String> date) {
             this.context = context;
             this.moviesList = moviesList;
             this.moviesList2=moviesList2;
+            this.name = name;
+            this.date = date;
             this.images = images;
             moviesListAll = new ArrayList<>();
             moviesListAll.addAll(moviesList);
@@ -231,7 +237,7 @@ public class Group_History_Screen extends AppCompatActivity {
 
         public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-            private TextView myText1, myText2;
+            private TextView myText1, myText2, dateText, nameText;
             private ImageView myImage;
             private ConstraintLayout mainLayout;
 
@@ -243,6 +249,9 @@ public class Group_History_Screen extends AppCompatActivity {
                 myText2 = itemView.findViewById(R.id.myText2Page6);
                 myImage = itemView.findViewById(R.id.myImageViewPage6);
                 mainLayout = itemView.findViewById(R.id.mainLayoutPage6);
+                dateText = itemView.findViewById(R.id.textView39);
+                nameText = itemView.findViewById(R.id.textView40);
+
             }
 
             @Override
@@ -270,6 +279,8 @@ public class Group_History_Screen extends AppCompatActivity {
             //產生資料
             holder.myText1.setText(moviesList.get(position));
             holder.myText2.setText(moviesList2.get(position));
+            holder.nameText.setText(name.get(position));
+            holder.dateText.setText(date.get(position));
 
             Picasso.get().load(images.get(position)).into(holder.myImage);
 
@@ -278,8 +289,14 @@ public class Group_History_Screen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, Group_History_Screen_Page2.class);
-                    intent.putExtra("data1Page6", moviesList.get(position));
-                    intent.putExtra("data2Page6", moviesList2.get(position));
+                    intent.putExtra("mountain_name", moviesList.get(position));
+                    intent.putExtra("point", moviesList2.get(position));
+                    intent.putExtra("groupName", name.get(position));
+                    intent.putExtra("startDate", date.get(position));
+                    intent.putExtra("peopleNum", peopleList.get(position));
+                    intent.putExtra("des", desList.get(position));
+
+
                     intent.putExtra("myImagePage6", images.get(position));
                     context.startActivity(intent);
                 }
