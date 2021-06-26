@@ -46,12 +46,7 @@ public class Join_Group_Screen extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
     String myResponse;
 
-
-
-
-    public ArrayList<String> moviesList;
-    public ArrayList<String> moviesList2;
-    public ArrayList<String> images;
+    public ArrayList<String> moviesList, moviesList2, images, dateList, groupList, peopleList, desList;
     ArrayList<Integer> groupId;
 
 //    private int images[] ;
@@ -65,11 +60,14 @@ public class Join_Group_Screen extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
 
-
+        dateList = new ArrayList<>();
+        groupList = new ArrayList<>();
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
         images = new ArrayList<>();
         groupId = new ArrayList<>();
+        peopleList = new ArrayList<>();
+        desList = new ArrayList<>();
         reciveGroupInfo();
 
 
@@ -144,9 +142,13 @@ public class Join_Group_Screen extends AppCompatActivity {
                 String finish_lat = jsonObject.getString("finish_lat");
                 String finish_lng = jsonObject.getString("finish_lng");
 
-                moviesList.add(name);
-                moviesList2.add(description);
+                moviesList.add(mountain_name);
+                moviesList2.add(points);
                 images.add(image);
+                dateList.add(start_date);
+                groupList.add(name);
+                peopleList.add(total_num);
+                desList.add(description);
                 groupId.add(id);
 
             }
@@ -155,7 +157,7 @@ public class Join_Group_Screen extends AppCompatActivity {
         }
         Log.v("joe","images== "+images);
 
-        recyclerAdapter = new RecyclerAdapter(this, moviesList, moviesList2, images);
+        recyclerAdapter = new RecyclerAdapter(this, moviesList, moviesList2, images, dateList, groupList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -182,7 +184,6 @@ public class Join_Group_Screen extends AppCompatActivity {
             }
         });
 
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -191,16 +192,14 @@ public class Join_Group_Screen extends AppCompatActivity {
 
         private static final String TAG = "RecyclerAdapter";
         Context context;
-        ArrayList<String> moviesList;
-        ArrayList<String> moviesList2;
-        ArrayList<String> moviesListAll;
-        ArrayList<String> images;
-//        int images[];
+        ArrayList<String> moviesList, moviesList2, moviesListAll, images, dateList, groupList;
 
-        public RecyclerAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images) {
+        public RecyclerAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images, ArrayList<String> dateList, ArrayList<String> groupList) {
             this.context = context;
             this.moviesList = moviesList;
             this.moviesList2 = moviesList2;
+            this.dateList = dateList;
+            this.groupList = groupList;
             this.images = images;
             moviesListAll = new ArrayList<>();
             moviesListAll.addAll(moviesList);
@@ -219,6 +218,9 @@ public class Join_Group_Screen extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.rowCountTextView.setText(moviesList2.get(position));
             holder.textView.setText(moviesList.get(position));
+            holder.dateText.setText(dateList.get(position));
+            holder.groupText.setText(groupList.get(position));
+
 
             Picasso.get().load(images.get(position)).into(holder.imageView) ;
 
@@ -227,9 +229,15 @@ public class Join_Group_Screen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, Join_Group_Screen_Page2.class);
-                    intent.putExtra("data1", moviesList.get(position));
-                    intent.putExtra("data2", moviesList2.get(position));
+                    intent.putExtra("mountain", moviesList.get(position));
+                    intent.putExtra("point", moviesList2.get(position));
                     intent.putExtra("myImage", images.get(position));
+                    intent.putExtra("date", dateList.get(position));
+                    intent.putExtra("groupName", groupList.get(position));
+                    intent.putExtra("people", peopleList.get(position));
+                    intent.putExtra("des", desList.get(position));
+
+
                     intent.putExtra("groupId", groupId.get(position));
                     context.startActivity(intent);
                 }
@@ -283,7 +291,7 @@ public class Join_Group_Screen extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             ImageView imageView;
-            TextView textView, rowCountTextView;
+            TextView textView, rowCountTextView, dateText, groupText;
             ConstraintLayout mainLayout;
 
             public ViewHolder(@NonNull View itemView) {
@@ -293,6 +301,8 @@ public class Join_Group_Screen extends AppCompatActivity {
                 textView = itemView.findViewById(R.id.textView);
                 rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
                 mainLayout = itemView.findViewById(R.id.mainLayout2);
+                dateText = itemView.findViewById(R.id.textView25);
+                groupText = itemView.findViewById(R.id.textView26);
 
                 itemView.setOnClickListener(this);
 

@@ -33,8 +33,8 @@ import okhttp3.Response;
 
 public class Join_Group_Screen_Page2 extends AppCompatActivity {
     ImageView mainImageView;
-    TextView title, descriptionJoin_Group_Screen_Page2;
-    String data1, data2;
+    TextView title, descriptionJoin_Group_Screen_Page2, dateText, groupText, peopleText, desText;
+    String data1, data2, date, groupName, people, des;
 //    int myImage;
     String myImage;
     int groupId;
@@ -48,23 +48,28 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
         mainImageView = findViewById(R.id.mainImageView);
         title = findViewById(R.id.title);
         descriptionJoin_Group_Screen_Page2 = findViewById(R.id.descriptionJoin_Group_Screen_Page2);
+        dateText= findViewById(R.id.textView27);
+        groupText= findViewById(R.id.textView32);
+        peopleText= findViewById(R.id.textView33);
+        desText= findViewById(R.id.textView34);
 
         getData();
         setData();
-
-
-
     }
 
 
     private void  getData() {
-        if (getIntent().hasExtra("myImage") && getIntent().hasExtra("data1") && getIntent().hasExtra("data2")){
+        if (getIntent().hasExtra("myImage") && getIntent().hasExtra("mountain") && getIntent().hasExtra("point")){
 
 
             //產生資料
-            data1 = getIntent().getStringExtra("data1");
-            data2 = getIntent().getStringExtra("data2");
-//            myImage = getIntent().getIntExtra("myImage", 1);
+            data1 = getIntent().getStringExtra("mountain");
+            data2 = getIntent().getStringExtra("point");
+            date = getIntent().getStringExtra("date");
+            groupName = getIntent().getStringExtra("groupName");
+            people = getIntent().getStringExtra("people");
+            des = getIntent().getStringExtra("des");
+
             myImage = getIntent().getStringExtra("myImage");
             groupId = getIntent().getIntExtra("groupId", 1);
         }else{
@@ -78,7 +83,10 @@ public class Join_Group_Screen_Page2 extends AppCompatActivity {
         //輸出版面
         title.setText(data1);
         descriptionJoin_Group_Screen_Page2.setText(data2);
-//        mainImageView.setImageResource(myImage);
+        dateText.setText(date);
+        groupText.setText(groupName);
+        peopleText.setText(people);
+        desText.setText(des);
         Picasso.get().load(myImage).into(mainImageView);
     }
 
