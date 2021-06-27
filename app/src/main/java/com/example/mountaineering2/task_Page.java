@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,13 +59,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class task_Page extends AppCompatActivity implements
@@ -80,13 +85,13 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public double END_POI_LAT;//經度
-    public double END_POI_LNG;//緯度
+    public double END_POI_LAT=24.181496;//經度
+    public double END_POI_LNG=121.281587;//緯度
     //合歡山北峰  24.181496,121.281587
     //七星山 25.1708318,121.5358237
 
 
-    transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm分ss秒");
+    transient SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
 
     private GoogleMap mMap;
     private Location mLastLocation;
@@ -125,15 +130,18 @@ public class task_Page extends AppCompatActivity implements
         @Override
         public void run() {
             runTime = System.currentTimeMillis() - startTime; //現在時間減最初時間
-            time_tv.setText("經過時間：00時" + dateFormat.format(runTime));
+            time_tv.setText("經過時間：00:" + dateFormat.format(runTime));
             mTimeHandler.postDelayed(mTimeRunner, 1000);
         }
     };
 
     private TextView mountain_name;
-    private String url,mountain;
+    private String url,mountain,total_time;
     private SharedPreferences sp;
-    int groupId;
+    Calendar mCal;
+    CharSequence finish_date;
+    CharSequence start_time;
+    String GroupId;
 
     // 建立OkHttpClient
     OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -181,7 +189,7 @@ public class task_Page extends AppCompatActivity implements
         time_tv = findViewById(R.id.activity_main_time_tv);
         distance_tv = findViewById(R.id.activity_main_distance_tv);
 
-        //開始時間
+        //-------------------開始時間-----------------------------
         startNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -192,6 +200,11 @@ public class task_Page extends AppCompatActivity implements
                 mTimeHandler.postDelayed(mTimeRunner, 1000);
                 totalDistance = (Math.round(getDistance(END_POI_LAT, END_POI_LNG, mLastLocation.getLatitude(), mLastLocation.getLongitude())
                         * 1000) / 1000.0);
+
+                //按下開始導航 紀錄當下時間
+                start_time= DateFormat.format("yyyy-MM-ddTkk:mm:ss", mCal.getTime());
+                Log.v("joe","開始導航"+start_time);
+
             }
         });
 
@@ -227,7 +240,10 @@ public class task_Page extends AppCompatActivity implements
         sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
         url=sp.getString("url","");
 
+        //連接api
         setGET();
+
+        mCal = Calendar.getInstance();
     }
 
     private void doGoogleRouteDrawing(double lat, double lng) {
@@ -511,10 +527,20 @@ public class task_Page extends AppCompatActivity implements
                                 public void onClick(DialogInterface dialog, int which) {
                                     stopNavi.performClick();
                                     dialog.dismiss();
-                                    finishPageTarget.setText("七星山");
-                                    finishPageTime.setText(("00時" + dateFormat.format(runTime)));
+                                    try{
+                                        finishPageTarget.setText(mountain); //完成頁的目標名稱
+                                    }catch (Exception e){
+                                        Log.e("error",e.toString());
+                                    }
+                                    finishPageTime.setText(("00:" + dateFormat.format(runTime)));
                                     finishPageDistance.setText(String.valueOf(totalDistance) + "公里");
                                     finishPageLL.setVisibility(View.VISIBLE);
+
+                                    //日期時間
+                                    finish_date = DateFormat.format("yyyy-MM-ddTkk:mm:ss", mCal.getTime());
+                                    total_time=("00:" + dateFormat.format(runTime));
+
+                                    sendPUT();
                                 }
                             });
                     builder.create().show();
@@ -632,15 +658,13 @@ public class task_Page extends AppCompatActivity implements
 
         return distance;
     }
-    //---------------------get方法取得山的經緯度-------------------------------------------------------------------
-
+    //---------------------get方法取得山的經緯度-------------------------------------
     private void setGET(){
 
-        //從上一頁的資料傳到這裡  不確定放方法裡面能不能作動
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle!=null){
-            groupId =bundle.getInt("GroupId");
-        }
+        //把從登入那邊的資料傳到這裡顯示出來
+        Intent intent = this.getIntent();
+        GroupId = intent.getStringExtra("GroupId");
+
         /**設置傳送需求*/
         Request request = new Request.Builder()
                 .url(url+"/api/groups/"+"4")
@@ -682,6 +706,43 @@ public class task_Page extends AppCompatActivity implements
             }
 
         }
+    //---------------------put方法-------------------------------------
 
+    private void sendPUT() {
+
+
+        // RequestBody放要傳的參數和值
+        Map<String, String> map = new HashMap();
+        //map.put("points",);
+        map.put("start_time",start_time.toString());//日期
+        map.put("finish_time",finish_date.toString()); //完成任務的日期 finish_date.toString()
+        map.put("total_time",total_time); //幾分幾秒 11:40:14
+        //map.put("finish_lat",);
+       // map.put("finish_lng",);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());
+
+        // 建立Request，設置連線資訊
+        Request request = new Request.Builder()
+                .url(url+"/api/groups/"+GroupId)
+                .put(body)
+                .build();
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.v("joe", "Bad== " + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+                    Log.v("joe", "有成功" + myResponse);
+                }
+            }
+        });
+    }
 
 }
