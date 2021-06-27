@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -49,9 +50,8 @@ public class Join_Group_Screen extends AppCompatActivity {
     public ArrayList<String> moviesList, moviesList2, images, dateList, groupList, peopleList, desList;
     ArrayList<Integer> groupId;
 
-//    private int images[] ;
-//            = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
-//            R.drawable.baydawushan, R.drawable.namguashan};
+
+    LoadingDialog loadingDialog = new LoadingDialog(Join_Group_Screen.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +70,21 @@ public class Join_Group_Screen extends AppCompatActivity {
         desList = new ArrayList<>();
         reciveGroupInfo();
 
+        loding();
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void loding() {
+        loadingDialog.startLoadingDiolog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        },3000);
     }
 
     public void reciveGroupInfo() {

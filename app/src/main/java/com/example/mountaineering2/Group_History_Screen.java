@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,9 +49,7 @@ public class Group_History_Screen extends AppCompatActivity {
 
     String myResponse;
 
-
-//    int images[] = {R.drawable.yushan, R.drawable.jalishan, R.drawable.guguan, R.drawable.huhwanshan,
-//            R.drawable.baydawushan, R.drawable.namguashan};
+    LoadingDialog loadingDialog = new LoadingDialog(Group_History_Screen.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class Group_History_Screen extends AppCompatActivity {
         images = new ArrayList<>();
 
         reciveGroupHis();
-
+        loding();
 
         recyclerView = findViewById(R.id.groupHistoryGroup_History_Screen);
 
@@ -77,6 +76,17 @@ public class Group_History_Screen extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void loding() {
+        loadingDialog.startLoadingDiolog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        },3000);
     }
 
     private void reciveGroupHis() {

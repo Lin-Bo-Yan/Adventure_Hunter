@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,6 +49,7 @@ public class Search_Ing_Group_Screen extends AppCompatActivity {
     ArrayList<String> moviesList, moviesList2, startDate, groupName, images, ing_people, ing_ser;
     String myResponse;
     ArrayList<Integer> groupId;
+    LoadingDialog loadingDialog = new LoadingDialog(Search_Ing_Group_Screen.this);
 
 
     @Override
@@ -68,9 +70,20 @@ public class Search_Ing_Group_Screen extends AppCompatActivity {
         recyclerView = findViewById(R.id.groupIngSearch_Ing_Group);
 
         reciveIngGroup();
-
+        loading();
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void loading() {
+        loadingDialog.startLoadingDiolog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        }, 2000);
     }
 
     private void reciveIngGroup() {
