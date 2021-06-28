@@ -85,8 +85,8 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public double END_POI_LAT=24.181496;//經度
-    public double END_POI_LNG=121.281587;//緯度
+    public double END_POI_LAT;//經度
+    public double END_POI_LNG;//緯度
     //合歡山北峰  24.181496,121.281587
     //七星山 25.1708318,121.5358237
 
@@ -151,6 +151,7 @@ public class task_Page extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_page);
 
+        //地圖仔入資訊
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_content_view_map);
         if (mMap == null) {
             mMapFragment.getMapAsync(this);
@@ -245,6 +246,7 @@ public class task_Page extends AppCompatActivity implements
 
         mCal = Calendar.getInstance();
     }
+//---------------------------------- 方    法 -------------------------------------------------------------
 
     private void doGoogleRouteDrawing(double lat, double lng) {
         if (mPolyline != null) {
@@ -493,6 +495,7 @@ public class task_Page extends AppCompatActivity implements
         mMap.setOnPoiClickListener(this);
 
         LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LNG);
+        Log.v("joe","地圖就緒"+END_POI_LAT);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLocation, MAP_ZOOM_LEVEL));
         mEndMarker = mMap.addMarker(new MarkerOptions()
                 .flat(false)
@@ -665,9 +668,10 @@ public class task_Page extends AppCompatActivity implements
         Intent intent = this.getIntent();
         GroupId = intent.getStringExtra("GroupId");
 
+        //Log.v("joe","id"+GroupId);
         /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url(url+"/api/groups/"+"4")
+                .url(url+"/api/groups/"+1)
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);
@@ -684,7 +688,7 @@ public class task_Page extends AppCompatActivity implements
                 /**取得回傳*/
                 if (response.isSuccessful()) {
                     final String myResponse = response.body().string();
-                    //Log.v("joe", "OK==  " + myResponse);
+                    Log.v("joe", "OK==  " + myResponse);
                     lat_lng_json(myResponse);
 
                 }
@@ -699,8 +703,8 @@ public class task_Page extends AppCompatActivity implements
                 JSONObject root =new JSONObject(json);
                 END_POI_LAT=root.getDouble("start_lat");
                 END_POI_LNG=root.getDouble("start_lng");
-                mountain=root.getString("mountain_name");
-                mountain_name.setText(mountain);
+                mountain=root.getString("points");
+                Log.v("joe","ok"+END_POI_LAT);
             } catch (Exception e) {
                 //Log.e("joe",e.toString());
             }

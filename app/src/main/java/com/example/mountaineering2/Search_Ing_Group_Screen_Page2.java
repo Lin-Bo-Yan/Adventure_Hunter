@@ -154,6 +154,7 @@ public class Search_Ing_Group_Screen_Page2 extends AppCompatActivity {
                 intent.putExtra("GroupId", groupId);
                 startActivity(intent);
                 //頁面跳去任務
+                Log.v("joe","intent的東西："+intent);
             }
         });
         alert.setNegativeButton("等等再說", new DialogInterface.OnClickListener() {

@@ -109,7 +109,7 @@ public class Search_Ing_Group_Screen extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     myResponse = response.body().string();
 
-                    Log.v("joe", "Json" + myResponse);
+                    //Log.v("joe", "Json" + myResponse);
 
                     Search_Ing_Group_Screen.this.runOnUiThread(new Runnable() {
                         @Override
@@ -167,7 +167,7 @@ public class Search_Ing_Group_Screen extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("joe", "images== " + images);
+        //Log.v("joe", "images== " + images);
         myAdapter = new MyAdapter(this, moviesList, moviesList2, images, startDate, groupName);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
