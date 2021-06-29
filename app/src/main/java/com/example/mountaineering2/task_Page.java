@@ -151,11 +151,14 @@ public class task_Page extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_page);
 
-        //地圖仔入資訊
+
+
+        //地圖資訊金鑰來的
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_content_view_map);
         if (mMap == null) {
             mMapFragment.getMapAsync(this);
         }
+
 
         poiInfoLL = findViewById(R.id.poi_info_view_ll_content);
         startNaviLL = findViewById(R.id.activity_main_start_navi_ll);
@@ -241,10 +244,8 @@ public class task_Page extends AppCompatActivity implements
         sp=getApplicationContext().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
         url=sp.getString("url","");
 
-        //連接api
-        setGET();
-
         mCal = Calendar.getInstance();
+
     }
 //---------------------------------- 方    法 -------------------------------------------------------------
 
@@ -494,8 +495,9 @@ public class task_Page extends AppCompatActivity implements
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setOnPoiClickListener(this);
 
+
         LatLng endLocation = new LatLng(END_POI_LAT, END_POI_LNG);
-        Log.v("joe","地圖就緒"+END_POI_LAT);
+        Log.v("joe","地圖就緒"+END_POI_LNG);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(endLocation, MAP_ZOOM_LEVEL));
         mEndMarker = mMap.addMarker(new MarkerOptions()
                 .flat(false)
@@ -701,8 +703,8 @@ public class task_Page extends AppCompatActivity implements
         private void lat_lng_json(String json){
             try {
                 JSONObject root =new JSONObject(json);
-                END_POI_LAT=root.getDouble("start_lat");
-                END_POI_LNG=root.getDouble("start_lng");
+                END_POI_LAT=(double)root.getDouble("start_lat");
+                END_POI_LNG=(double)root.getDouble("start_lng");
                 mountain=root.getString("points");
                 Log.v("joe","ok"+END_POI_LAT);
             } catch (Exception e) {
