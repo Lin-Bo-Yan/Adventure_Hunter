@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_Time"
+        android:icon="@drawable/chronometer"
+        android:title="Time" />
+
+    <item
+        android:id="@+id/nav_Mountain"
+        android:icon="@drawable/rank"
+        android:title="Mountain" />
+
+    <item
+        android:id="@+id/nav_Point"
+        android:icon="@drawable/money"
+        android:title="Point" />
+
+</menu>
