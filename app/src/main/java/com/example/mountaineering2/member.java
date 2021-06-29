@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class member extends AppCompatActivity {
     String realname,cash,email,birth,ID,phone;
@@ -27,7 +28,6 @@ public class member extends AppCompatActivity {
          ID=sp.getString("ID","");
          phone=sp.getString("phone","");
          ff();
-
     }
 
 
@@ -55,6 +55,16 @@ public class member extends AppCompatActivity {
         bundle.putString("id",ID);
         goToSetUp.putExtras(bundle);
         startActivity(goToSetUp);
+    }
+
+    //-------登出會員
+    public void member_logout(View view) {
+        SharedPreferences.Editor editor=sp.edit();
+        editor.remove("ID");
+        editor.commit();
+        Toast.makeText(member.this,"會員登出",Toast.LENGTH_SHORT);
+        Intent intent = new Intent(this, sign_in.class);
+        startActivity(intent);
     }
 
     /*

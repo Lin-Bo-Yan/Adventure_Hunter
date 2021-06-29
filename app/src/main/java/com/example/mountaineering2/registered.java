@@ -99,7 +99,7 @@ public class registered extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                Log.v("joe", "Bad== " + e);
+                Log.e("joe", "錯誤：" + e);
             }
 
             @Override

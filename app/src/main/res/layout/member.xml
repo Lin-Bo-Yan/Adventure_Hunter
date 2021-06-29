@@ -29,10 +29,9 @@
         android:id="@+id/imageView2"
         android:layout_width="600dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/profile"
         android:layout_below="@id/realName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/ID"
@@ -183,6 +182,44 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kim_soo_hyun"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="-84dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="261dp"
+        android:layout_toEndOf="@+id/kim_soo_hyun"
+        android:layout_toRightOf="@+id/kim_soo_hyun"
+        android:text="會員登出"
+        android:textColor="#000"
+        android:textSize="10dp" />
+
+    <ImageView
+        android:layout_width="58dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/ID"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="296dp"
+        android:layout_marginLeft="296dp"
+        android:layout_marginTop="-171dp"
+        android:layout_marginEnd="-198dp"
+        android:layout_marginRight="-198dp"
+        android:layout_marginBottom="276dp"
+        android:layout_toStartOf="@+id/kim_soo_hyun"
+        android:layout_toLeftOf="@+id/kim_soo_hyun"
+        android:onClick="member_logout"
+        app:srcCompat="@drawable/ic_people"
+        tools:ignore="VectorDrawableCompat" />
 
 
 </RelativeLayout>
