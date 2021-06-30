@@ -121,7 +121,10 @@ public class Create_Group_Screen extends AppCompatActivity {
         nameMountain = mountainName.getText().toString();
 
 
-        if ( data != null && nameMountain != null) {
+        Log.v("joe", "Name= "+nameMountain.isEmpty());
+
+        if ( data != null && !nameMountain.isEmpty()) {
+
 
             String saySome;
 
