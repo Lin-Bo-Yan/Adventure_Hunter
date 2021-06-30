@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-        <activity android:name=".Rank_page"></activity>
+        <activity android:name=".Rank_page"
+            android:label="排行榜"
+            android:parentActivityName=".homeScreen"></activity>
         <activity android:name=".ShowRank" />
 
         <meta-data
