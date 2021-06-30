@@ -135,7 +135,7 @@ public class homeScreen extends AppCompatActivity {
     }
 
     public void Open_rank() {
-        Intent intent = new Intent(this, ShowRank.class);
+        Intent intent = new Intent(this, Rank_page.class);
         startActivity(intent);
     }
 

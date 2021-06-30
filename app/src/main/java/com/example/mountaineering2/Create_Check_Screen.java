@@ -60,8 +60,9 @@ public class Create_Check_Screen extends AppCompatActivity {
         dateShow.setText(date);
         mountainShow.setText(mountain);
         sayShow.setText(say);
+        peopleShow.setText(people+" 人");
         name.setText(name_mountain);
-        point.setText(pointString);
+        point.setText(pointString+" 點");
         Log.v("joe", "point== " + pointString);
 
 

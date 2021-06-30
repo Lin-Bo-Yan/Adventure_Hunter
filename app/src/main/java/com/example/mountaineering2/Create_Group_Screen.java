@@ -29,7 +29,7 @@ public class Create_Group_Screen extends AppCompatActivity {
     String spinner1;
     String spinner2;
     TextView dateText;
-    String data;
+    String data = null;
 
     private int mYear, mMonth, mDay;
 
@@ -116,22 +116,22 @@ public class Create_Group_Screen extends AppCompatActivity {
     }
 
     public void submitCreate(View view) {
-        String date = data.toString();
-        String mountain = spinner1.toString();
-        String people = spinner2.toString();
-        String saySome;
         String nameMountain;
 
         nameMountain = mountainName.getText().toString();
-        saySome = createSay.getText().toString();
 
 
-        if (data != null && !nameMountain.isEmpty()) {
+        if ( data != null && nameMountain != null) {
+
+            String saySome;
+
+            saySome = createSay.getText().toString();
+
             Intent intent = new Intent(this, Create_Check_Screen.class);
             Bundle bundle = new Bundle();
-            bundle.putString("date", date);
-            bundle.putString("mountain", mountain);
-            bundle.putString("people", people);
+            bundle.putString("date", data);
+            bundle.putString("mountain", spinner1);
+            bundle.putString("people", spinner2);
             bundle.putString("namemountain", nameMountain);
             if (!saySome.isEmpty()) {
                 bundle.putString("sayText", saySome);
@@ -142,7 +142,7 @@ public class Create_Group_Screen extends AppCompatActivity {
                 Log.v("joe", "sayEmpty= "+saySome);
             }
             Log.v("joe", "saysome= " + saySome.isEmpty());
-            Log.v("joe","date= "+date);
+            Log.v("joe","date= "+data);
 
 
             intent.putExtras(bundle);

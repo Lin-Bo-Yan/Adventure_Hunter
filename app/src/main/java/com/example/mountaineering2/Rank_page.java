@@ -42,34 +42,40 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Group_History_Screen extends AppCompatActivity {
+public class Rank_page extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private ArrayList<String> moviesList, moviesList2, images, date, nameList, peopleList, desList;
 
     String myResponse;
 
-    LoadingDialog loadingDialog = new LoadingDialog(Group_History_Screen.this);
+    LoadingDialog loadingDialog = new LoadingDialog(Rank_page.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.group_history_screen);
+        setContentView(R.layout.activity_rank_page);
 
         //抓取String.xml裡的資料
 
         moviesList = new ArrayList<>();
         moviesList2 = new ArrayList<>();
-        date = new ArrayList<>();
-        nameList = new ArrayList<>();
-        peopleList = new ArrayList<>();
+//        date = new ArrayList<>();
+//        nameList = new ArrayList<>();
+//        peopleList = new ArrayList<>();
         desList = new ArrayList<>();
-        images = new ArrayList<>();
+//        images = new ArrayList<>();
 
-        reciveGroupHis();
+        reciveRank();
         loding();
 
-        recyclerView = findViewById(R.id.groupHistoryGroup_History_Screen);
+        recyclerView = findViewById(R.id.Rank_recycle);
+
+//        myAdapter = new Rank_page.MyAdapter(this, moviesList, moviesList2, images, nameList, date);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(myAdapter);
+
+
 
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -84,15 +90,15 @@ public class Group_History_Screen extends AppCompatActivity {
             public void run() {
                 loadingDialog.dismissDialog();
             }
-        },3000);
+        }, 3000);
     }
 
-    private void reciveGroupHis() {
+    private void reciveRank() {
         SharedPreferences sp = getSharedPreferences("MyUser", MODE_PRIVATE);
-        String url1 = sp.getString("url",null);
-        String urlId =sp.getString("ID", "42");
+        String url1 = sp.getString("url", null);
+        String urlId = sp.getString("ID", "42");
         OkHttpClient client = new OkHttpClient();
-        String url = url1+"/api/groups/his/"+urlId;
+        String url = url1 + "/api/rank";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -112,7 +118,7 @@ public class Group_History_Screen extends AppCompatActivity {
 
                     Log.v("joe", "Json" + myResponse);
 
-                    Group_History_Screen.this.runOnUiThread(new Runnable() {
+                    Rank_page.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             parseJson(myResponse);
@@ -124,49 +130,29 @@ public class Group_History_Screen extends AppCompatActivity {
     }
 
     private void parseJson(String myResponse) {
+
+
         try {
             JSONArray jsonArray = new JSONArray(myResponse);
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Integer id = jsonObject.getInt("id");
-                String creator_id = jsonObject.getString("creator_id");
-                String name = jsonObject.getString("name");
-                String slug = jsonObject.getString("slug");
-                String description = jsonObject.getString("description");
-                String status = jsonObject.getString("status");
-                String parent_id = jsonObject.getString("parent_id");
-                String enable_forum = jsonObject.getString("enable_forum");
-                String date_created = jsonObject.getString("date_created");
-                String start_date = jsonObject.getString("start_date");
-                String mountain_name = jsonObject.getString("mountain_name");
-                String total_num = jsonObject.getString("total_num");
-                String image = jsonObject.getString("image");
-                String attendee = jsonObject.getString("attendee");
-                String points = jsonObject.getString("points");
-                String start_time = jsonObject.getString("start_time");
-                String finish_time = jsonObject.getString("finish_time");
-                String total_time = jsonObject.getString("total_time");
-                String start_lat = jsonObject.getString("start_lat");
-                String start_lng = jsonObject.getString("start_lng");
-                String finish_lat = jsonObject.getString("finish_lat");
-                String finish_lng = jsonObject.getString("finish_lng");
+                String userName = jsonObject.getString("user_nickname");
+                Integer point = jsonObject.getInt("points");
+                String points = Integer.toString(point);
+                String rank = Integer.toString(i+1);
 
-                moviesList.add(mountain_name);
+                desList.add("排名: "+rank);
+                moviesList.add(userName);
                 moviesList2.add(points);
-                date.add(start_date);
-                nameList.add(name);
-                peopleList.add(total_num);
-                desList.add(description);
-                images.add(image);
 
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("joe","images== "+images);
-
-        myAdapter = new Group_History_Screen.MyAdapter(this, moviesList, moviesList2, images, nameList, date);
+        Log.v("joe", "images== " + images);
+        myAdapter = new Rank_page.MyAdapter(this, moviesList, moviesList2, images, nameList, date);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
 
@@ -194,7 +180,8 @@ public class Group_History_Screen extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
-    public class MyAdapter extends RecyclerView.Adapter<Group_History_Screen.MyAdapter.MyViewHolder> implements Filterable {
+
+    public class MyAdapter extends RecyclerView.Adapter<Rank_page.MyAdapter.MyViewHolder> implements Filterable {
 
         Context context;
         ArrayList<String> moviesList, moviesList2, moviesListAll, images, name, date;
@@ -203,7 +190,7 @@ public class Group_History_Screen extends AppCompatActivity {
         public MyAdapter(Context context, ArrayList<String> moviesList, ArrayList<String> moviesList2, ArrayList<String> images, ArrayList<String> name, ArrayList<String> date) {
             this.context = context;
             this.moviesList = moviesList;
-            this.moviesList2=moviesList2;
+            this.moviesList2 = moviesList2;
             this.name = name;
             this.date = date;
             this.images = images;
@@ -215,6 +202,7 @@ public class Group_History_Screen extends AppCompatActivity {
         public Filter getFilter() {
             return myFilter;
         }
+
         Filter myFilter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
@@ -223,7 +211,7 @@ public class Group_History_Screen extends AppCompatActivity {
                 if (charSequence == null || charSequence.length() == 0) {
                     filteredList.addAll(moviesListAll);
                 } else {
-                    for (String movie: moviesListAll) {
+                    for (String movie : moviesListAll) {
                         if (movie.toLowerCase().contains(charSequence.toString().toLowerCase())) {
                             filteredList.add(movie);
                         }
@@ -243,9 +231,9 @@ public class Group_History_Screen extends AppCompatActivity {
             }
         };
 
-        public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            private TextView myText1, myText2, dateText, nameText;
+            private TextView myText1, myText2, rankText, dateText, nameText;
             private ImageView myImage;
             private ConstraintLayout mainLayout;
 
@@ -253,12 +241,13 @@ public class Group_History_Screen extends AppCompatActivity {
                 super(itemView);
 
                 //抓取id
-                myText1 = itemView.findViewById(R.id.myText1Page6);
-                myText2 = itemView.findViewById(R.id.myText2Page6);
-                myImage = itemView.findViewById(R.id.myImageViewPage6);
-                mainLayout = itemView.findViewById(R.id.mainLayoutPage6);
-                dateText = itemView.findViewById(R.id.textView39);
-                nameText = itemView.findViewById(R.id.textView40);
+                rankText = itemView.findViewById(R.id.textView59);
+                myText1 = itemView.findViewById(R.id.textView60);
+                myText2 = itemView.findViewById(R.id.textView61);
+//                myImage = itemView.findViewById(R.id.myImageViewPage6);
+//                mainLayout = itemView.findViewById(R.id.mainLayoutPage6);
+//                dateText = itemView.findViewById(R.id.textView39);
+//                nameText = itemView.findViewById(R.id.textView40);
 
             }
 
@@ -271,44 +260,45 @@ public class Group_History_Screen extends AppCompatActivity {
 
         @NonNull
         @Override
-        public Group_History_Screen.MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public Rank_page.MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
             //create出 my_row 版面
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.row_group_history_screen, parent, false);
-            Group_History_Screen.MyAdapter.MyViewHolder vh = new Group_History_Screen.MyAdapter.MyViewHolder(view);
+            View view = inflater.inflate(R.layout.row_rank, parent, false);
+            Rank_page.MyAdapter.MyViewHolder vh = new Rank_page.MyAdapter.MyViewHolder(view);
 
             return vh;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull Group_History_Screen.MyAdapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull Rank_page.MyAdapter.MyViewHolder holder, int position) {
 
             //產生資料
+            holder.rankText.setText(desList.get(position));
             holder.myText1.setText(moviesList.get(position));
             holder.myText2.setText(moviesList2.get(position));
-            holder.nameText.setText(name.get(position));
-            holder.dateText.setText(date.get(position));
-
-            Picasso.get().load(images.get(position)).into(holder.myImage);
+//            holder.nameText.setText(name.get(position));
+//            holder.dateText.setText(date.get(position));
+//
+//            Picasso.get().load(images.get(position)).into(holder.myImage);
 
             //觸發mainLayout listener
-            holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, Group_History_Screen_Page2.class);
-                    intent.putExtra("mountain_name", moviesList.get(position));
-                    intent.putExtra("point", moviesList2.get(position));
-                    intent.putExtra("groupName", name.get(position));
-                    intent.putExtra("startDate", date.get(position));
-                    intent.putExtra("peopleNum", peopleList.get(position));
-                    intent.putExtra("des", desList.get(position));
-
-
-                    intent.putExtra("myImagePage6", images.get(position));
-                    context.startActivity(intent);
-                }
-            });
+//            holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(context, Group_History_Screen_Page2.class);
+//                    intent.putExtra("mountain_name", moviesList.get(position));
+//                    intent.putExtra("point", moviesList2.get(position));
+//                    intent.putExtra("groupName", name.get(position));
+//                    intent.putExtra("startDate", date.get(position));
+//                    intent.putExtra("peopleNum", peopleList.get(position));
+//                    intent.putExtra("des", desList.get(position));
+//
+//
+//                    intent.putExtra("myImagePage6", images.get(position));
+//                    context.startActivity(intent);
+//                }
+//            });
         }
 
         @Override
