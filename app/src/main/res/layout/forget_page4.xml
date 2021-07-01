@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:text="NEXT"
             android:textSize="19dp"
-            app:backgroundTint="#000000"
+            app:backgroundTint="@color/green_1"
             android:layout_marginTop="30dp"/>
 
 

@@ -85,8 +85,8 @@ public class task_Page extends AppCompatActivity implements
     public static final int MARKER_Z_INDEX = 150;
     public static final int MAP_ZOOM_LEVEL = 16;
     public static final int POLYLINE_Z_INDEX = 100;
-    public double END_POI_LAT;//經度
-    public double END_POI_LNG;//緯度
+    public double END_POI_LAT=23.470080287412962;//經度
+    public double END_POI_LNG=120.95745383444489;//緯度
     //合歡山北峰  24.181496,121.281587
     //七星山 25.1708318,121.5358237
 
@@ -673,7 +673,7 @@ public class task_Page extends AppCompatActivity implements
         //Log.v("joe","id"+GroupId);
         /**設置傳送需求*/
         Request request = new Request.Builder()
-                .url(url+"/api/groups/"+1)
+                .url(url+"/api/groups/"+4)
                 .build();
         /**設置回傳*/
         Call call = client.newCall(request);

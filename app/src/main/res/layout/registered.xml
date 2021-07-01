@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee"
         android:text="Registered"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <LinearLayout
@@ -126,7 +126,7 @@
         android:layout_marginTop="25dp"
         android:text="GO"
         android:textSize="19dp"
-        app:backgroundTint="#000" />
+        app:backgroundTint="@color/green_1" />
 
 
 </LinearLayout>

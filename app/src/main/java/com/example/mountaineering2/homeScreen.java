@@ -65,7 +65,7 @@ public class homeScreen extends AppCompatActivity {
         weather_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                weater_Page();
             }
         });
 
@@ -144,6 +144,11 @@ public class homeScreen extends AppCompatActivity {
 
     public void Open_rank() {
         Intent intent = new Intent(this, Rank_page.class);
+        startActivity(intent);
+    }
+
+    public void weater_Page() {
+        Intent intent = new Intent(this, weater_Page.class);
         startActivity(intent);
     }
 

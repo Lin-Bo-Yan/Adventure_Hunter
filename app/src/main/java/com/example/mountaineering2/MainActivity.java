@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //存放http_url的值
         SharedPreferences sp = getSharedPreferences("MyUser", MODE_PRIVATE);
-        sp.edit().putString("url", "https://5aaea103ff2f.ngrok.io").apply();
+        sp.edit().putString("url", "https://cfb23c234c66.ngrok.io").apply();
 
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottonAnim = AnimationUtils.loadAnimation(this, R.anim.botton_animation);

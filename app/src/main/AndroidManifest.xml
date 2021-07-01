@@ -11,14 +11,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/hiking"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mountaineering2">
-
         <activity android:name=".Rank_page"
-            android:label="排行查詢"
+            android:label="排行榜"
             android:parentActivityName=".homeScreen"></activity>
         <activity android:name=".ShowRank" />
 
@@ -29,6 +28,9 @@
         <activity
             android:name=".task_Page"
             android:label="任務頁面" />
+        <activity android:name=".weater_Page"
+            android:label="天氣"
+            android:parentActivityName=".homeScreen"/>
         <activity
             android:name=".login_failed"
             android:label="帳號密碼錯誤" />
@@ -39,7 +41,7 @@
             android:parentActivityName=".member" />
         <activity
             android:name=".findPeople"
-            android:label="任務選單"
+            android:label="任務主頁"
             android:parentActivityName=".homeScreen" />
         <activity
             android:name=".Join_Group_Screen"
@@ -98,7 +100,7 @@
             android:parentActivityName=".homeScreen" />
         <activity
             android:name=".homeScreen"
-            android:label="         Adventure Hunter     百岳尋寶手" />
+            android:label="Adventure Hunter" />
         <activity
             android:name=".registered"
             android:label="註冊"
