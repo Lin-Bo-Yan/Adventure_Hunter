@@ -5,10 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="50dp">
+    android:padding="50dp"
+    android:background="@color/blue_2">
 
     <ProgressBar
         android:id="@+id/progressBar"
+
         style="?android:attr/progressBarStyle"
         android:layout_width="97dp"
         android:layout_height="85dp"

@@ -143,7 +143,7 @@ public class Rank_page extends AppCompatActivity {
                 String points = Integer.toString(point);
                 String rank = Integer.toString(i+1);
 
-                desList.add("排名: "+rank);
+                desList.add("排名: 第"+rank+"名");
                 moviesList.add(userName);
                 moviesList2.add(points);
 

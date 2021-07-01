@@ -6,11 +6,14 @@ import androidx.cardview.widget.CardView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.net.URL;
 
 public class homeScreen extends AppCompatActivity {
 
@@ -71,7 +74,7 @@ public class homeScreen extends AppCompatActivity {
         point_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                gotUrl("https://traveladventurehunter.com/%e7%92%b0%e4%bf%9d%e8%a3%9d%e5%82%99%e5%95%86%e5%9f%8e/");
             }
         });
 
@@ -102,6 +105,11 @@ public class homeScreen extends AppCompatActivity {
 //                }
 //            }
 //        });
+    }
+
+    private void gotUrl(String s) {
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     //任務

@@ -14,9 +14,11 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <ImageView
             android:id="@+id/imageView9"
@@ -50,7 +52,8 @@
         app:cardCornerRadius="35dp"
         app:cardElevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/blue_1">
 
         <TextView
             android:id="@+id/textView52"
@@ -63,6 +66,7 @@
             android:shadowDy="0.5"
             android:shadowRadius="2"
             android:text="任務選單"
+
             android:textColor="#FF000000"
             android:textSize="25sp" />
 
@@ -85,7 +89,9 @@
         app:cardCornerRadius="35dp"
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/blue_1"
+        >
 
         <TextView
             android:id="@+id/textView53"
@@ -99,6 +105,7 @@
             android:shadowRadius="2"
             android:text="排行查詢"
             android:textColor="#FF000000"
+
             android:textSize="25sp" />
 
         <ImageView
@@ -120,7 +127,8 @@
         app:cardCornerRadius="35dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@color/blue_1">
 
         <TextView
             android:id="@+id/textView54"
@@ -133,6 +141,7 @@
             android:shadowDy="0.5"
             android:shadowRadius="2"
             android:text="天氣資訊"
+
             android:textColor="#FF000000"
             android:textSize="25sp" />
 
@@ -155,7 +164,8 @@
         app:cardCornerRadius="35dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@color/blue_1">
 
         <TextView
             android:id="@+id/textView55"
@@ -167,6 +177,7 @@
             android:shadowDx="0.5"
             android:shadowDy="0.5"
             android:shadowRadius="2"
+
             android:text="點數兌獎"
             android:textColor="#FF000000"
             android:textSize="25sp" />

@@ -11,4 +11,9 @@
     <color name="colorPrimaryDark">#FFF</color>
     <color name="colorAccoent">#D81B60</color>
     <color name="blue_41">#4192ff</color>
+    <color name="green_1">#9EE4A8</color>
+    <color name="blue_1">#8EC9E4</color>
+    <color name="blue_2">#94DEFF</color>
+    <color name="green">#94FFAB</color>
+
 </resources>

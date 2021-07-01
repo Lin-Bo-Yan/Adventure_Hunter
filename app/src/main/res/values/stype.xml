@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+<!--        <item name="colorPrimary">@color/blue_41</item>-->
+        <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccoent</item>
+        <item name="colorPrimary">@color/green_1</item>
     </style>
+
+<!--    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title." parent="@android:style/TextAppearance">-->
+
+<!--        <item name="android:textSize">30dp</item>-->
+<!--        <item name="android:textColor">@color/green</item>-->
+<!--        <item name="fontFamily">monospace</item>-->
+<!--    </style>-->
 </resources>

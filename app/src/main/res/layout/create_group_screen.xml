@@ -9,7 +9,7 @@
     tools:context=".Create_Group_Screen"
     android:id="@+id/Create_bg"
     android:onClick="CloseInputKeyboard"
-    android:background="#A0D2D8">
+    >
 
 
     <TextView
@@ -32,8 +32,10 @@
         android:layout_marginTop="55dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/bg_round_button"
         android:text="選擇日期"
-        app:backgroundTint="#2196F3"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/blue_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -139,14 +141,19 @@
         android:id="@+id/button"
         android:layout_width="111dp"
         android:layout_height="54dp"
-        android:layout_marginStart="279dp"
-        android:layout_marginLeft="279dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginLeft="260dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
+        android:background="@drawable/bg_round_button"
+        android:backgroundTint="@color/blue_1"
         android:onClick="submitCreate"
         android:text="提交"
+        android:textColor="@color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
