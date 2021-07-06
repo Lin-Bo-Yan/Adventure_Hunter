@@ -56,7 +56,8 @@
                 android:paddingEnd="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="陽明山"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                 android:lineSpacingMultiplier="1.2"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="這座地標性火山海拔約 1,114 公尺 (3,657 英尺)，是台北最高峰，有步道和溫泉。"
+                android:text="風景秀麗的景點，有溫泉和健走步道，該國最大的休眠火山也位於此。"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
 

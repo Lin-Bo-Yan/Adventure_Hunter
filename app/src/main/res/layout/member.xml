@@ -174,7 +174,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="member_logout"
-        app:cardBackgroundColor="@color/blue_1">
+        app:cardBackgroundColor="@color/blue_2">
 
         <ImageView
             android:id="@+id/imageView9"
@@ -211,7 +211,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_below="@+id/member_card"
         android:onClick="go_set_up"
-        app:cardBackgroundColor="@color/blue_1">
+        app:cardBackgroundColor="@color/blue_2">
 
         <ImageView
             android:id="@+id/imageView1"

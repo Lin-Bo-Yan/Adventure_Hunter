@@ -27,7 +27,9 @@
 
         <activity
             android:name=".task_Page"
-            android:label="任務頁面" />
+            android:label="任務頁面"
+            android:parentActivityName=".findPeople"/>
+
         <activity android:name=".weater_Page"
             android:label="天氣"
             android:parentActivityName=".homeScreen"/>
