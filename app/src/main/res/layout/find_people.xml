@@ -57,7 +57,7 @@
         app:backgroundTint="@color/blue_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/joinGroupIng"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/joinGroupIng"/>
 
     <Button
         android:id="@+id/groupHistory"
@@ -75,7 +75,21 @@
         android:textSize="24sp"
         app:backgroundTint="@color/blue_1"
         app:layout_constraintStart_toEndOf="@+id/goToCreateGroup"
-        app:layout_constraintTop_toBottomOf="@+id/joinGroupIng"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/joinGroupIng"/>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="119dp"
+        app:layout_constraintBottom_toTopOf="@+id/joinGroupIng"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37"
+        app:srcCompat="@drawable/messageimage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

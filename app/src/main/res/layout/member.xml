@@ -178,8 +178,8 @@
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="46dp"
-            android:layout_height="wrap_content"
+            android:layout_width="49dp"
+            android:layout_height="42dp"
             android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/user" />
 
@@ -234,15 +234,6 @@
             android:textColor="#FF000000"
             android:textSize="15sp" />
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
-
 
 
 <!--
