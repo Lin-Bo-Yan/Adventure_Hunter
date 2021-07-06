@@ -143,7 +143,7 @@ public class Rank_page extends AppCompatActivity {
                 String points = Integer.toString(point);
                 String rank = Integer.toString(i+1);
 
-                desList.add("排名: 第"+rank+"名");
+                desList.add("No. "+rank);
                 moviesList.add(userName);
                 moviesList2.add(points);
 
@@ -244,10 +244,7 @@ public class Rank_page extends AppCompatActivity {
                 rankText = itemView.findViewById(R.id.textView59);
                 myText1 = itemView.findViewById(R.id.textView60);
                 myText2 = itemView.findViewById(R.id.textView61);
-//                myImage = itemView.findViewById(R.id.myImageViewPage6);
-//                mainLayout = itemView.findViewById(R.id.mainLayoutPage6);
-//                dateText = itemView.findViewById(R.id.textView39);
-//                nameText = itemView.findViewById(R.id.textView40);
+
 
             }
 
@@ -264,7 +261,7 @@ public class Rank_page extends AppCompatActivity {
 
             //create出 my_row 版面
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.row_rank, parent, false);
+            View view = inflater.inflate(R.layout.row_rank1, parent, false);
             Rank_page.MyAdapter.MyViewHolder vh = new Rank_page.MyAdapter.MyViewHolder(view);
 
             return vh;
@@ -277,28 +274,7 @@ public class Rank_page extends AppCompatActivity {
             holder.rankText.setText(desList.get(position));
             holder.myText1.setText(moviesList.get(position));
             holder.myText2.setText(moviesList2.get(position));
-//            holder.nameText.setText(name.get(position));
-//            holder.dateText.setText(date.get(position));
-//
-//            Picasso.get().load(images.get(position)).into(holder.myImage);
 
-            //觸發mainLayout listener
-//            holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(context, Group_History_Screen_Page2.class);
-//                    intent.putExtra("mountain_name", moviesList.get(position));
-//                    intent.putExtra("point", moviesList2.get(position));
-//                    intent.putExtra("groupName", name.get(position));
-//                    intent.putExtra("startDate", date.get(position));
-//                    intent.putExtra("peopleNum", peopleList.get(position));
-//                    intent.putExtra("des", desList.get(position));
-//
-//
-//                    intent.putExtra("myImagePage6", images.get(position));
-//                    context.startActivity(intent);
-//                }
-//            });
         }
 
         @Override

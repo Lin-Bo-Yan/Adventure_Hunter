@@ -7,10 +7,37 @@
     tools:context=".Rank_page"
     android:background="@drawable/hiking_bg_">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:text="排名        暱稱      獲得點數"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Rank_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
