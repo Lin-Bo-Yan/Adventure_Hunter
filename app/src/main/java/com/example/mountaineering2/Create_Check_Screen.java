@@ -29,6 +29,7 @@ public class Create_Check_Screen extends AppCompatActivity {
     TextView dateShow, mountainShow, peopleShow, sayShow, name, point;
     String pointString;
     String date, mountain, people, say, name_mountain;
+    int i;
 
 
     @Override
@@ -53,7 +54,7 @@ public class Create_Check_Screen extends AppCompatActivity {
         people = bundle.getString("people");
         say = bundle.getString("sayText");
         name_mountain = bundle.getString("namemountain");
-        int i = Integer.parseInt(people);
+        i = Integer.parseInt(people);
         pointString = Integer.toString(i * 100);
 
 
@@ -96,11 +97,13 @@ public class Create_Check_Screen extends AppCompatActivity {
         map.put("start_date", date);
         map.put("mountain_name", mountain);
         map.put("description", say);
+        map.put("total_num", people);
         map.put("name", name_mountain);
         map.put("points", pointString);
         map.put("image", "https://i.ibb.co/WP78xk9/j-QUBYCx-Qwt-small.jpg");
 
 
+        Log.v("joe","map= "+map);
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), new JSONObject(map).toString());
 
         Request request = new Request.Builder()
