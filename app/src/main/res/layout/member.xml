@@ -15,6 +15,7 @@
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"/>
    姓名
+
     <TextView
         android:id="@+id/realName"
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
         android:layout_marginTop="5dp"
         android:text="用戶名"
         android:textColor="@color/white"
-        android:textSize="17dp" />
+        android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -69,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/white"
-            android:textSize="15dp"/>
+            android:textSize="25dp"/>
 
 
     </LinearLayout>
@@ -80,25 +81,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LinearLayout1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="35dp"
             android:src="@drawable/ic_cake" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="生日："
             android:textColor="@color/white"
-            android:textSize="25dp"/>
+            android:textSize="25dp" />
+
         <TextView
             android:id="@+id/birth"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/white"
-            android:textSize="15dp"/>
+            android:textSize="25dp"/>
 
     </LinearLayout>
 
@@ -108,7 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LinearLayout2"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="30dp"
@@ -124,9 +127,9 @@
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="15dp"/>
+            android:textSize="25dp"/>
 
 
 
@@ -138,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LinearLayout3"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="35dp"
@@ -156,7 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/white"
-            android:textSize="15dp"/>
+            android:textSize="25dp"/>
 
 
 
@@ -187,15 +190,15 @@
             android:id="@+id/textView50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
+            android:layout_marginLeft="47dp"
             android:layout_marginTop="7dp"
             android:shadowColor="#ccc"
             android:shadowDx="0.5"
             android:shadowDy="0.5"
             android:shadowRadius="2"
-            android:text="會員登出"
+            android:text="登出"
             android:textColor="#FF000000"
-            android:textSize="13sp" />
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
 
@@ -204,7 +207,7 @@
         android:id="@+id/settings"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="300dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +235,7 @@
             android:shadowRadius="2"
             android:text="設定"
             android:textColor="#FF000000"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
 
